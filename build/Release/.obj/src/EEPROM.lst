@@ -1,0 +1,292 @@
+C51 COMPILER V9.59.0.0   EEPROM                                                            01/22/2024 23:25:30 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE EEPROM
+OBJECT MODULE PLACED IN .\build\Release\.obj\src\EEPROM.o
+COMPILER INVOKED BY: D:\soft\Keil\C51\BIN\C51.exe .\SRC\EEPROM.C OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\
+                    -.obj\src\EEPROM.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION=526) OPTIMIZE(8,SPEED) SMALL ROM(LARGE) O
+                    -BJECT(.\build\Release\.obj\src\EEPROM.o)
+
+line level    source
+
+   1          #include<REG52.H>
+   2          #include<EEPROM.H>
+   3          
+   4          static void EEPROMinit()
+   5          {
+   6   1          IAP_TRIG = 0X46;
+   7   1          IAP_TRIG = 0XB9;
+   8   1      }
+   9          
+  10          static void EEPROMisable()
+  11          {
+  12   1          IAP_CONTR = 0X00;
+  13   1          IAP_CMD = 0X00;
+  14   1          IAP_TRIG = 0X00;
+  15   1      }
+  16          
+  17          void EEPROMErase(unsigned int addr)
+  18          {
+  19   1          IAP_CONTR = 0X81;
+  20   1          IAP_CMD = 0X03;
+  21   1      
+  22   1          IAP_ADDRH = addr>>8;
+  23   1          IAP_ADDRL = addr;
+  24   1          
+  25   1          EEPROMinit();
+  26   1          EEPROMisable();
+  27   1      }
+  28          
+  29          void EEPROMWrite(unsigned int addr,unsigned char dat)
+  30          {
+  31   1          IAP_CONTR = 0X81;
+  32   1          IAP_CMD = 0X02;
+  33   1      
+  34   1          IAP_ADDRH = addr>>8;
+  35   1          IAP_ADDRL = addr;
+  36   1          IAP_DATA = dat;
+  37   1          
+  38   1          EEPROMinit();
+  39   1          EEPROMisable();
+  40   1      }
+  41          
+  42          unsigned char EEPROMRead(unsigned int addr)
+  43          {
+  44   1          unsigned char dat;
+  45   1          IAP_CONTR = 0X81;
+  46   1          IAP_CMD = 0X01;
+  47   1      
+  48   1          IAP_ADDRH = addr>>8;
+  49   1          IAP_ADDRL = addr;
+  50   1          
+  51   1          EEPROMinit();
+  52   1          dat = IAP_DATA;
+  53   1          EEPROMisable();
+C51 COMPILER V9.59.0.0   EEPROM                                                            01/22/2024 23:25:30 PAGE 2   
+
+  54   1          return dat;
+  55   1      }
+C51 COMPILER V9.59.0.0   EEPROM                                                            01/22/2024 23:25:30 PAGE 3   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION EEPROMinit (BEGIN)
+                                           ; SOURCE LINE # 4
+                                           ; SOURCE LINE # 5
+                                           ; SOURCE LINE # 6
+0000 75E646            MOV     IAP_TRIG,#046H
+                                           ; SOURCE LINE # 7
+0003 75E6B9            MOV     IAP_TRIG,#0B9H
+                                           ; SOURCE LINE # 8
+0006 22                RET     
+             ; FUNCTION EEPROMinit (END)
+
+             ; FUNCTION EEPROMisable (BEGIN)
+                                           ; SOURCE LINE # 10
+                                           ; SOURCE LINE # 11
+                                           ; SOURCE LINE # 12
+0000 E4                CLR     A
+0001 F5E7              MOV     IAP_CONTR,A
+                                           ; SOURCE LINE # 13
+0003 F5E5              MOV     IAP_CMD,A
+                                           ; SOURCE LINE # 14
+0005 F5E6              MOV     IAP_TRIG,A
+                                           ; SOURCE LINE # 15
+0007 22                RET     
+             ; FUNCTION EEPROMisable (END)
+
+             ; FUNCTION _EEPROMErase (BEGIN)
+                                           ; SOURCE LINE # 17
+;---- Variable 'addr' assigned to Register 'R4/R5' ----
+0000 AD07              MOV     R5,AR7
+0002 AC06              MOV     R4,AR6
+                                           ; SOURCE LINE # 18
+                                           ; SOURCE LINE # 19
+0004 75E781            MOV     IAP_CONTR,#081H
+                                           ; SOURCE LINE # 20
+0007 75E503            MOV     IAP_CMD,#03H
+                                           ; SOURCE LINE # 22
+000A 8CE3              MOV     IAP_ADDRH,R4
+                                           ; SOURCE LINE # 23
+000C 8DE4              MOV     IAP_ADDRL,R5
+                                           ; SOURCE LINE # 25
+000E 120000      R     LCALL   EEPROMinit
+                                           ; SOURCE LINE # 26
+0011 020000      R     LJMP    EEPROMisable
+             ; FUNCTION _EEPROMErase (END)
+
+             ; FUNCTION _EEPROMWrite (BEGIN)
+                                           ; SOURCE LINE # 29
+;---- Variable 'addr' assigned to Register 'R2/R3' ----
+0000 AB07              MOV     R3,AR7
+0002 AA06              MOV     R2,AR6
+;---- Variable 'dat' assigned to Register 'R5' ----
+                                           ; SOURCE LINE # 30
+                                           ; SOURCE LINE # 31
+0004 75E781            MOV     IAP_CONTR,#081H
+                                           ; SOURCE LINE # 32
+0007 75E502            MOV     IAP_CMD,#02H
+                                           ; SOURCE LINE # 34
+000A 8AE3              MOV     IAP_ADDRH,R2
+                                           ; SOURCE LINE # 35
+C51 COMPILER V9.59.0.0   EEPROM                                                            01/22/2024 23:25:30 PAGE 4   
+
+000C 8BE4              MOV     IAP_ADDRL,R3
+                                           ; SOURCE LINE # 36
+000E 8DE2              MOV     IAP_DATA,R5
+                                           ; SOURCE LINE # 38
+0010 120000      R     LCALL   EEPROMinit
+                                           ; SOURCE LINE # 39
+0013 020000      R     LJMP    EEPROMisable
+             ; FUNCTION _EEPROMWrite (END)
+
+             ; FUNCTION _EEPROMRead (BEGIN)
+                                           ; SOURCE LINE # 42
+;---- Variable 'addr' assigned to Register 'R4/R5' ----
+0000 AD07              MOV     R5,AR7
+0002 AC06              MOV     R4,AR6
+                                           ; SOURCE LINE # 43
+                                           ; SOURCE LINE # 45
+0004 75E781            MOV     IAP_CONTR,#081H
+                                           ; SOURCE LINE # 46
+0007 75E501            MOV     IAP_CMD,#01H
+                                           ; SOURCE LINE # 48
+000A 8CE3              MOV     IAP_ADDRH,R4
+                                           ; SOURCE LINE # 49
+000C 8DE4              MOV     IAP_ADDRL,R5
+                                           ; SOURCE LINE # 51
+000E 120000      R     LCALL   EEPROMinit
+                                           ; SOURCE LINE # 52
+;---- Variable 'dat' assigned to Register 'R7' ----
+0011 AFE2              MOV     R7,IAP_DATA
+                                           ; SOURCE LINE # 53
+0013 020000      R     LJMP    EEPROMisable
+             ; FUNCTION _EEPROMRead (END)
+
+C51 COMPILER V9.59.0.0   EEPROM                                                            01/22/2024 23:25:30 PAGE 5   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+P0 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0080H  1
+P1 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0090H  1
+EEPROMinit . . . . . . . . . . . . . .  STATIC   CODE   PROC     0000H  -----
+P2 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A0H  1
+P3 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B0H  1
+T0 . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B4H  1
+AC . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D6H  1
+T1 . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B5H  1
+T2 . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0090H  1
+EA . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00AFH  1
+IE . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A8H  1
+IAP_CMD. . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E5H  1
+EXF2 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CEH  1
+RD . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B7H  1
+ES . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00ACH  1
+IP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B8H  1
+RI . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0098H  1
+INT0 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B2H  1
+CY . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D7H  1
+TI . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0099H  1
+INT1 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B3H  1
+IAP_ADDRH. . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E3H  1
+RCAP2H . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CBH  1
+PS . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00BCH  1
+SP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0081H  1
+IAP_ADDRL. . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E4H  1
+T2EX . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0091H  1
+OV . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D2H  1
+RCAP2L . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CAH  1
+C_T2 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00C9H  1
+WR . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B6H  1
+RCLK . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CDH  1
+TCLK . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CCH  1
+SBUF . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0099H  1
+PCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0087H  1
+SCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0098H  1
+TMOD . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0089H  1
+TCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0088H  1
+_EEPROMErase . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  addr . . . . . . . . . . . . . . . .  * REG *  DATA   U_INT    0004H  2
+IE0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0089H  1
+EEPROMisable . . . . . . . . . . . . .  STATIC   CODE   PROC     0000H  -----
+IE1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008BH  1
+B. . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00F0H  1
+IAP_CONTR. . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E7H  1
+CP_RL2 . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00C8H  1
+ACC. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E0H  1
+_EEPROMRead. . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  addr . . . . . . . . . . . . . . . .  * REG *  DATA   U_INT    0004H  2
+  dat. . . . . . . . . . . . . . . . .  * REG *  DATA   U_CHAR   0007H  1
+ET0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00A9H  1
+ET1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00ABH  1
+TF0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008DH  1
+ET2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00ADH  1
+TF1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008FH  1
+TF2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CFH  1
+RB8. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009AH  1
+C51 COMPILER V9.59.0.0   EEPROM                                                            01/22/2024 23:25:30 PAGE 6   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+TH0. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008CH  1
+EX0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00A8H  1
+IT0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0088H  1
+TH1. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008DH  1
+TB8. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009BH  1
+EX1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00AAH  1
+IT1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008AH  1
+TH2. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CDH  1
+P. . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D0H  1
+SM0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009FH  1
+TL0. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008AH  1
+SM1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009EH  1
+TL1. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008BH  1
+SM2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009DH  1
+TL2. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CCH  1
+PT0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B9H  1
+PT1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00BBH  1
+RS0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D3H  1
+IAP_DATA . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E2H  1
+PT2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00BDH  1
+TR0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008CH  1
+RS1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D4H  1
+TR1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008EH  1
+TR2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CAH  1
+PX0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B8H  1
+_EEPROMWrite . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  addr . . . . . . . . . . . . . . . .  * REG *  DATA   U_INT    0002H  2
+  dat. . . . . . . . . . . . . . . . .  * REG *  DATA   U_CHAR   0005H  1
+PX1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00BAH  1
+DPH. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0083H  1
+DPL. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0082H  1
+EXEN2. . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CBH  1
+REN. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009CH  1
+T2CON. . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00C8H  1
+RXD. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B0H  1
+TXD. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B1H  1
+IAP_TRIG . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E6H  1
+F0 . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D5H  1
+PSW. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D0H  1
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     79    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

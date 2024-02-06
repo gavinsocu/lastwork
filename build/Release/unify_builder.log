@@ -1,0 +1,905 @@
+[2024-01-19 23:10:26]	[done]
+	build successfully !
+
+[2024-01-20 00:40:37]	link failed !, exit code: 2
+   at unify_builder.Program.Main(String[] args_)
+---
+
+LX51 LINKER/LOCATER V4.66.93.0 - SN: Eval Version
+COPYRIGHT ARM Germany GmbH 1995 - 2018
+@c:\Users\gavinccc\Desktop\bigwork\lastwork\build\Release\lastwork.lnp .\build\Release\.obj\src\Clock.o,.\build\Release\.obj\src\Delay.o,.\build\Release\.obj\src\EEPROM.o,.\build\Release\.obj\src\EEPROMmaker.o,.\build\Release\.obj\src\Led.o,.\build\Release\.obj\src\Nixie.o,.\build\Release\.obj\src\Timeio.o,.\build\Release\.obj\src\hander.o,.\build\Release\.obj\src\init.o,.\build\Release\.obj\src\main.o TO .\build\Release\lastwork
+PRINT(.\build\Release\lastwork.map) REMOVEUNUSED
+
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA
+    SEGMENT: ?DT?HANDER
+    LENGTH:  00000BH   
+
+*** WARNING L25: DATA TYPES DIFFERENT
+    SYMBOL:  getdata
+    MODULE:  .\BUILD\RELEASE\.OBJ\SRC\MAIN.O (MAIN)
+   DEFINED:  .\BUILD\RELEASE\.OBJ\SRC\HANDER.O (HANDER)
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0763H BYTE (92%) *
+******************************************************************************
+
+Program Size: data=130.2 xdata=0 const=143 code=3755
+LX51 RUN COMPLETE.  1 WARNING(S),  1 ERROR(S)
+
+
+[2024-01-20 00:40:48]	link failed !, exit code: 2
+   at unify_builder.Program.Main(String[] args_)
+---
+
+LX51 LINKER/LOCATER V4.66.93.0 - SN: Eval Version
+COPYRIGHT ARM Germany GmbH 1995 - 2018
+@c:\Users\gavinccc\Desktop\bigwork\lastwork\build\Release\lastwork.lnp .\build\Release\.obj\src\Clock.o,.\build\Release\.obj\src\Delay.o,.\build\Release\.obj\src\EEPROM.o,.\build\Release\.obj\src\EEPROMmaker.o,.\build\Release\.obj\src\Led.o,.\build\Release\.obj\src\Nixie.o,.\build\Release\.obj\src\Timeio.o,.\build\Release\.obj\src\hander.o,.\build\Release\.obj\src\init.o,.\build\Release\.obj\src\main.o TO .\build\Release\lastwork
+PRINT(.\build\Release\lastwork.map) REMOVEUNUSED
+
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA
+    SEGMENT: ?DT?HANDER
+    LENGTH:  00000BH   
+
+*** WARNING L25: DATA TYPES DIFFERENT
+    SYMBOL:  getdata
+    MODULE:  .\BUILD\RELEASE\.OBJ\SRC\MAIN.O (MAIN)
+   DEFINED:  .\BUILD\RELEASE\.OBJ\SRC\HANDER.O (HANDER)
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0763H BYTE (92%) *
+******************************************************************************
+
+Program Size: data=130.2 xdata=0 const=143 code=3755
+LX51 RUN COMPLETE.  1 WARNING(S),  1 ERROR(S)
+
+
+[2024-01-20 00:41:23]	[done]
+	build successfully !
+
+[2024-01-20 00:46:33]	[done]
+	build successfully !
+
+[2024-01-20 00:48:23]	[done]
+	build successfully !
+
+[2024-01-20 01:11:09]	[done]
+	build successfully !
+
+[2024-01-20 01:11:50]	[done]
+	build successfully !
+
+[2024-01-20 01:14:34]	[done]
+	build successfully !
+
+[2024-01-20 01:24:31]	[done]
+	build successfully !
+
+[2024-01-20 01:37:54]	[done]
+	build successfully !
+
+[2024-01-20 01:57:25]	[done]
+	build successfully !
+
+[2024-01-20 01:57:30]	[done]
+	build successfully !
+
+[2024-01-20 02:13:43]	[done]
+	build successfully !
+
+[2024-01-20 02:19:40]	[done]
+	build successfully !
+
+[2024-01-20 02:21:33]	[done]
+	build successfully !
+
+[2024-01-20 02:36:48]	[done]
+	build successfully !
+
+[2024-01-20 02:44:43]	[done]
+	build successfully !
+
+[2024-01-20 02:45:36]	[done]
+	build successfully !
+
+[2024-01-20 02:46:39]	[done]
+	build successfully !
+
+[2024-01-20 02:47:49]	[done]
+	build successfully !
+
+[2024-01-20 02:49:49]	[done]
+	build successfully !
+
+[2024-01-20 02:55:33]	[done]
+	build successfully !
+
+[2024-01-20 02:56:09]	[done]
+	build successfully !
+
+[2024-01-20 03:00:51]	[done]
+	build successfully !
+
+[2024-01-20 03:07:34]	[done]
+	build successfully !
+
+[2024-01-20 03:08:06]	[done]
+	build successfully !
+
+[2024-01-20 03:09:09]	[done]
+	build successfully !
+
+[2024-01-20 03:13:26]	[done]
+	build successfully !
+
+[2024-01-20 03:13:56]	[done]
+	build successfully !
+
+[2024-01-20 03:14:42]	[done]
+	build successfully !
+
+[2024-01-20 14:25:57]	[done]
+	build successfully !
+
+[2024-01-20 14:31:33]	[done]
+	build successfully !
+
+[2024-01-20 15:42:05]	[done]
+	build successfully !
+
+[2024-01-20 15:47:26]	[done]
+	build successfully !
+
+[2024-01-20 15:51:33]	[done]
+	build successfully !
+
+[2024-01-20 16:04:14]	[done]
+	build successfully !
+
+[2024-01-20 16:16:51]	[done]
+	build successfully !
+
+[2024-01-20 16:17:46]	[done]
+	build successfully !
+
+[2024-01-20 16:19:23]	[done]
+	build successfully !
+
+[2024-01-20 16:21:32]	[done]
+	build successfully !
+
+[2024-01-20 16:30:48]	[done]
+	build successfully !
+
+[2024-01-20 17:08:23]	[done]
+	build successfully !
+
+[2024-01-20 17:42:45]	compilation failed at : "c:\Users\gavinccc\Desktop\bigwork\lastwork\src\main.c", exit code: 2
+command: 
+  "D:\soft\Keil\C51\BIN\C51.exe" .\src\main.c OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.obj\src\main.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION='526') OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJECT(.\build\Release\.obj\src\main.o)
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+C51 COMPILER V9.59.0.0 - SN: Eval Version
+COPYRIGHT Copyright (C) 2012 - 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+*** ERROR C202 IN LINE 63 OF .\SRC\MAIN.C: 'i': undefined identifier
+*** ERROR C202 IN LINE 65 OF .\SRC\MAIN.C: 'i': undefined identifier
+*** ERROR C202 IN LINE 67 OF .\SRC\MAIN.C: 'i': undefined identifier
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  3 ERROR(S)
+
+[2024-01-20 17:45:22]	[done]
+	build successfully !
+
+[2024-01-20 18:02:17]	[done]
+	build successfully !
+
+[2024-01-20 18:05:27]	[done]
+	build successfully !
+
+[2024-01-20 22:54:15]	[done]
+	build successfully !
+
+[2024-01-20 22:55:55]	[done]
+	build successfully !
+
+[2024-01-20 23:11:32]	[done]
+	build successfully !
+
+[2024-01-21 14:12:56]	[done]
+	build successfully !
+
+[2024-01-21 14:27:22]	[done]
+	build successfully !
+
+[2024-01-21 14:27:56]	[done]
+	build successfully !
+
+[2024-01-21 14:29:47]	[done]
+	build successfully !
+
+[2024-01-21 15:07:12]	[done]
+	build successfully !
+
+[2024-01-21 15:09:01]	[done]
+	build successfully !
+
+[2024-01-21 15:10:37]	[done]
+	build successfully !
+
+[2024-01-21 15:11:35]	[done]
+	build successfully !
+
+[2024-01-21 15:18:49]	[done]
+	build successfully !
+
+[2024-01-21 15:24:21]	[done]
+	build successfully !
+
+[2024-01-21 15:29:36]	compilation failed at : "c:\Users\gavinccc\Desktop\bigwork\lastwork\src\main.c", exit code: 2
+command: 
+  "D:\soft\Keil\C51\BIN\C51.exe" .\src\main.c OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.obj\src\main.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION='526') OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJECT(.\build\Release\.obj\src\main.o)
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+C51 COMPILER V9.59.0.0 - SN: Eval Version
+COPYRIGHT Copyright (C) 2012 - 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+*** ERROR C202 IN LINE 46 OF .\SRC\HANDER.C: 'str': undefined identifier
+*** ERROR C202 IN LINE 49 OF .\SRC\HANDER.C: 'str': undefined identifier
+*** ERROR C202 IN LINE 54 OF .\SRC\HANDER.C: 'str': undefined identifier
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  3 ERROR(S)
+C51 COMPILER V9.59.0.0 - SN: Eval Version
+COPYRIGHT Copyright (C) 2012 - 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+*** ERROR C141 IN LINE 119 OF .\SRC\MAIN.C: syntax error near 'int', expected '__asm'
+*** ERROR C202 IN LINE 119 OF .\SRC\MAIN.C: 'maxnum': undefined identifier
+*** ERROR C202 IN LINE 120 OF .\SRC\MAIN.C: 'maxnum': undefined identifier
+*** ERROR C202 IN LINE 125 OF .\SRC\MAIN.C: 'maxnum': undefined identifier
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  4 ERROR(S)
+
+[2024-01-21 15:30:02]	compilation failed at : "c:\Users\gavinccc\Desktop\bigwork\lastwork\src\main.c", exit code: 2
+command: 
+  "D:\soft\Keil\C51\BIN\C51.exe" .\src\main.c OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.obj\src\main.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION='526') OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJECT(.\build\Release\.obj\src\main.o)
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+C51 COMPILER V9.59.0.0 - SN: Eval Version
+COPYRIGHT Copyright (C) 2012 - 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+*** ERROR C141 IN LINE 119 OF .\SRC\MAIN.C: syntax error near 'int', expected '__asm'
+*** ERROR C202 IN LINE 119 OF .\SRC\MAIN.C: 'maxnum': undefined identifier
+*** ERROR C202 IN LINE 120 OF .\SRC\MAIN.C: 'maxnum': undefined identifier
+*** ERROR C202 IN LINE 125 OF .\SRC\MAIN.C: 'maxnum': undefined identifier
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  4 ERROR(S)
+
+[2024-01-21 15:30:19]	[done]
+	build successfully !
+
+[2024-01-21 15:31:26]	[done]
+	build successfully !
+
+[2024-01-21 15:32:30]	[done]
+	build successfully !
+
+[2024-01-21 15:34:33]	[done]
+	build successfully !
+
+[2024-01-21 15:35:19]	[done]
+	build successfully !
+
+[2024-01-21 15:36:07]	[done]
+	build successfully !
+
+[2024-01-21 15:48:33]	[done]
+	build successfully !
+
+[2024-01-21 15:48:49]	[done]
+	build successfully !
+
+[2024-01-21 15:53:55]	link failed !, exit code: 3
+   at unify_builder.Program.Main(String[] args_)
+---
+
+LX51 LINKER/LOCATER V4.66.93.0 - SN: Eval Version
+COPYRIGHT ARM Germany GmbH 1995 - 2018
+@c:\Users\gavinccc\Desktop\bigwork\lastwork\build\Release\lastwork.lnp .\build\Release\.obj\src\Clock.o,.\build\Release\.obj\src\Delay.o,.\build\Release\.obj\src\EEPROM.o,.\build\Release\.obj\src\EEPROMmaker.o,.\build\Release\.obj\src\Led.o,.\build\Release\.obj\src\Nixie.o,.\build\Release\.obj\src\Timeio.o,.\build\Release\.obj\src\hander.o,.\build\Release\.obj\src\init.o,.\build\Release\.obj\src\main.o TO .\build\Release\lastwork
+PRINT(.\build\Release\lastwork.map) REMOVEUNUSED
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UPDATEHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UARTHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    GETDATA/HANDER
+    CALLER1: MAKETIMER/MAIN
+    CALLER2: MAKEINTER/MAIN
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0821H BYTE (101%) *
+******************************************************************************
+
+Program Size: data=110.1 xdata=0 const=107 code=3341
+
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UPDATEHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UARTHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    GETDATA/HANDER
+    CALLER1: MAKETIMER/MAIN
+    CALLER2: MAKEINTER/MAIN
+
+*** ERROR L250: CODE SIZE LIMIT IN RESTRICTED VERSION EXCEEDED
+    LIMIT:   0800H BYTES
+
+
+[2024-01-21 15:54:06]	link failed !, exit code: 3
+   at unify_builder.Program.Main(String[] args_)
+---
+
+LX51 LINKER/LOCATER V4.66.93.0 - SN: Eval Version
+COPYRIGHT ARM Germany GmbH 1995 - 2018
+@c:\Users\gavinccc\Desktop\bigwork\lastwork\build\Release\lastwork.lnp .\build\Release\.obj\src\Clock.o,.\build\Release\.obj\src\Delay.o,.\build\Release\.obj\src\EEPROM.o,.\build\Release\.obj\src\EEPROMmaker.o,.\build\Release\.obj\src\Led.o,.\build\Release\.obj\src\Nixie.o,.\build\Release\.obj\src\Timeio.o,.\build\Release\.obj\src\hander.o,.\build\Release\.obj\src\init.o,.\build\Release\.obj\src\main.o TO .\build\Release\lastwork
+PRINT(.\build\Release\lastwork.map) REMOVEUNUSED
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UPDATEHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UARTHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    GETDATA/HANDER
+    CALLER1: MAKETIMER/MAIN
+    CALLER2: MAKEINTER/MAIN
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0821H BYTE (101%) *
+******************************************************************************
+
+Program Size: data=110.1 xdata=0 const=107 code=3341
+
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UPDATEHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UARTHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    GETDATA/HANDER
+    CALLER1: MAKETIMER/MAIN
+    CALLER2: MAKEINTER/MAIN
+
+*** ERROR L250: CODE SIZE LIMIT IN RESTRICTED VERSION EXCEEDED
+    LIMIT:   0800H BYTES
+
+
+[2024-01-21 15:54:40]	[done]
+	build successfully !
+
+[2024-01-21 15:57:34]	link failed !, exit code: 3
+   at unify_builder.Program.Main(String[] args_)
+---
+
+LX51 LINKER/LOCATER V4.66.93.0 - SN: Eval Version
+COPYRIGHT ARM Germany GmbH 1995 - 2018
+@c:\Users\gavinccc\Desktop\bigwork\lastwork\build\Release\lastwork.lnp .\build\Release\.obj\src\Clock.o,.\build\Release\.obj\src\Delay.o,.\build\Release\.obj\src\EEPROM.o,.\build\Release\.obj\src\EEPROMmaker.o,.\build\Release\.obj\src\Led.o,.\build\Release\.obj\src\Nixie.o,.\build\Release\.obj\src\Timeio.o,.\build\Release\.obj\src\hander.o,.\build\Release\.obj\src\init.o,.\build\Release\.obj\src\main.o TO .\build\Release\lastwork
+PRINT(.\build\Release\lastwork.map) REMOVEUNUSED
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UPDATEHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UARTHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    GETDATA/HANDER
+    CALLER1: MAKEUART/MAIN
+    CALLER2: GET/MAIN
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0874H BYTE (105%) *
+******************************************************************************
+
+Program Size: data=112.1 xdata=0 const=107 code=3406
+
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UPDATEHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UARTHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    GETDATA/HANDER
+    CALLER1: MAKEUART/MAIN
+    CALLER2: GET/MAIN
+
+*** ERROR L250: CODE SIZE LIMIT IN RESTRICTED VERSION EXCEEDED
+    LIMIT:   0800H BYTES
+
+
+[2024-01-21 16:03:57]	[done]
+	build successfully !
+
+[2024-01-21 16:04:26]	compilation failed at : "c:\Users\gavinccc\Desktop\bigwork\lastwork\src\main.c", exit code: 2
+command: 
+  "D:\soft\Keil\C51\BIN\C51.exe" .\src\main.c OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.obj\src\main.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION='526') OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJECT(.\build\Release\.obj\src\main.o)
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+C51 COMPILER V9.59.0.0 - SN: Eval Version
+COPYRIGHT Copyright (C) 2012 - 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+*** ERROR C141 IN LINE 123 OF .\SRC\MAIN.C: syntax error near 'unsigned', expected '__asm'
+*** ERROR C202 IN LINE 123 OF .\SRC\MAIN.C: 'i': undefined identifier
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  2 ERROR(S)
+
+[2024-01-21 16:04:38]	link failed !, exit code: 3
+   at unify_builder.Program.Main(String[] args_)
+---
+
+LX51 LINKER/LOCATER V4.66.93.0 - SN: Eval Version
+COPYRIGHT ARM Germany GmbH 1995 - 2018
+@c:\Users\gavinccc\Desktop\bigwork\lastwork\build\Release\lastwork.lnp .\build\Release\.obj\src\Clock.o,.\build\Release\.obj\src\Delay.o,.\build\Release\.obj\src\EEPROM.o,.\build\Release\.obj\src\EEPROMmaker.o,.\build\Release\.obj\src\Led.o,.\build\Release\.obj\src\Nixie.o,.\build\Release\.obj\src\Timeio.o,.\build\Release\.obj\src\hander.o,.\build\Release\.obj\src\init.o,.\build\Release\.obj\src\main.o TO .\build\Release\lastwork
+PRINT(.\build\Release\lastwork.map) REMOVEUNUSED
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UPDATEHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UARTHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA
+    SEGMENT: ?DT?HANDER
+    LENGTH:  00000BH   
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0806H BYTE (100%) *
+******************************************************************************
+
+Program Size: data=128.2 xdata=0 const=147 code=3914
+
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UPDATEHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UARTHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA
+    SEGMENT: ?DT?HANDER
+    LENGTH:  00000BH   
+
+*** ERROR L250: CODE SIZE LIMIT IN RESTRICTED VERSION EXCEEDED
+    LIMIT:   0800H BYTES
+
+
+[2024-01-21 16:05:15]	link failed !, exit code: 3
+   at unify_builder.Program.Main(String[] args_)
+---
+
+LX51 LINKER/LOCATER V4.66.93.0 - SN: Eval Version
+COPYRIGHT ARM Germany GmbH 1995 - 2018
+@c:\Users\gavinccc\Desktop\bigwork\lastwork\build\Release\lastwork.lnp .\build\Release\.obj\src\Clock.o,.\build\Release\.obj\src\Delay.o,.\build\Release\.obj\src\EEPROM.o,.\build\Release\.obj\src\EEPROMmaker.o,.\build\Release\.obj\src\Led.o,.\build\Release\.obj\src\Nixie.o,.\build\Release\.obj\src\Timeio.o,.\build\Release\.obj\src\hander.o,.\build\Release\.obj\src\init.o,.\build\Release\.obj\src\main.o TO .\build\Release\lastwork
+PRINT(.\build\Release\lastwork.map) REMOVEUNUSED
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UPDATEHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UARTHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA
+    SEGMENT: ?DT?HANDER
+    LENGTH:  00000BH   
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0802H BYTE (100%) *
+******************************************************************************
+
+Program Size: data=128.2 xdata=0 const=143 code=3914
+
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UPDATEHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _UARTHANDER/HANDER
+    CALLER1: MAKEHANDER/MAIN
+    CALLER2: MAKETIMER/MAIN
+
+*** ERROR L107: ADDRESS SPACE OVERFLOW
+    SPACE:   DATA
+    SEGMENT: ?DT?HANDER
+    LENGTH:  00000BH   
+
+*** ERROR L250: CODE SIZE LIMIT IN RESTRICTED VERSION EXCEEDED
+    LIMIT:   0800H BYTES
+
+
+[2024-01-21 16:05:37]	[done]
+	build successfully !
+
+[2024-01-21 16:07:24]	compilation failed at : "c:\Users\gavinccc\Desktop\bigwork\lastwork\src\main.c", exit code: 2
+command: 
+  "D:\soft\Keil\C51\BIN\C51.exe" .\src\main.c OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.obj\src\main.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION='526') OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJECT(.\build\Release\.obj\src\main.o)
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+C51 COMPILER V9.59.0.0 - SN: Eval Version
+COPYRIGHT Copyright (C) 2012 - 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+*** ERROR C141 IN LINE 128 OF .\SRC\MAIN.C: syntax error near 'while', expected ';'
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  1 ERROR(S)
+
+[2024-01-21 16:07:37]	[done]
+	build successfully !
+
+[2024-01-21 16:08:16]	[done]
+	build successfully !
+
+[2024-01-21 16:10:23]	[done]
+	build successfully !
+
+[2024-01-21 16:22:30]	[done]
+	build successfully !
+
+[2024-01-21 16:23:10]	[done]
+	build successfully !
+
+[2024-01-21 16:23:52]	[done]
+	build successfully !
+
+[2024-01-21 16:24:34]	[done]
+	build successfully !
+
+[2024-01-21 16:25:10]	[done]
+	build successfully !
+
+[2024-01-21 16:25:56]	[done]
+	build successfully !
+
+[2024-01-21 16:26:47]	[done]
+	build successfully !
+
+[2024-01-21 16:30:37]	[done]
+	build successfully !
+
+[2024-01-21 16:31:21]	[done]
+	build successfully !
+
+[2024-01-21 16:53:44]	[done]
+	build successfully !
+
+[2024-01-21 17:00:54]	compilation failed at : "c:\Users\gavinccc\Desktop\bigwork\lastwork\src\init.c", exit code: 2
+command: 
+  "D:\soft\Keil\C51\BIN\C51.exe" .\src\init.c OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.obj\src\init.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION='526') OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJECT(.\build\Release\.obj\src\init.o)
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+C51 COMPILER V9.59.0.0 - SN: Eval Version
+COPYRIGHT Copyright (C) 2012 - 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+*** ERROR C202 IN LINE 19 OF .\SRC\INIT.C: 'PT1H': undefined identifier
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  1 ERROR(S)
+
+[2024-01-21 17:01:24]	[done]
+	build successfully !
+
+[2024-01-21 17:01:57]	[done]
+	build successfully !
+
+[2024-01-21 17:02:53]	[done]
+	build successfully !
+
+[2024-01-21 17:04:35]	[done]
+	build successfully !
+
+[2024-01-21 17:12:57]	[done]
+	build successfully !
+
+[2024-01-21 17:19:36]	[done]
+	build successfully !
+
+[2024-01-21 17:27:02]	[done]
+	build successfully !
+
+[2024-01-21 17:27:35]	[done]
+	build successfully !
+
+[2024-01-21 17:29:07]	compilation failed at : "c:\Users\gavinccc\Desktop\bigwork\lastwork\src\main.c", exit code: 2
+command: 
+  "D:\soft\Keil\C51\BIN\C51.exe" .\src\main.c OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.obj\src\main.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION='526') OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJECT(.\build\Release\.obj\src\main.o)
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+C51 COMPILER V9.59.0.0 - SN: Eval Version
+COPYRIGHT Copyright (C) 2012 - 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+*** ERROR C202 IN LINE 93 OF .\SRC\MAIN.C: 'i': undefined identifier
+*** ERROR C202 IN LINE 95 OF .\SRC\MAIN.C: 'i': undefined identifier
+*** ERROR C202 IN LINE 97 OF .\SRC\MAIN.C: 'i': undefined identifier
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  3 ERROR(S)
+
+[2024-01-21 17:29:25]	[done]
+	build successfully !
+
+[2024-01-21 17:31:28]	[done]
+	build successfully !
+
+[2024-01-21 17:32:31]	[done]
+	build successfully !
+
+[2024-01-21 17:34:41]	[done]
+	build successfully !
+
+[2024-01-21 17:36:16]	[done]
+	build successfully !
+
+[2024-01-21 17:37:11]	[done]
+	build successfully !
+
+[2024-01-21 17:46:48]	[done]
+	build successfully !
+
+[2024-01-21 17:46:54]	[done]
+	build successfully !
+
+[2024-01-21 17:48:03]	[done]
+	build successfully !
+
+[2024-01-21 17:48:50]	[done]
+	build successfully !
+
+[2024-01-21 17:51:02]	[done]
+	build successfully !
+
+[2024-01-21 17:51:42]	[done]
+	build successfully !
+
+[2024-01-21 17:52:24]	[done]
+	build successfully !
+
+[2024-01-21 17:53:03]	[done]
+	build successfully !
+
+[2024-01-21 17:57:07]	[done]
+	build successfully !
+
+[2024-01-21 18:11:38]	[done]
+	build successfully !
+
+[2024-01-21 18:15:02]	[done]
+	build successfully !
+
+[2024-01-21 18:17:27]	compilation failed at : "c:\Users\gavinccc\Desktop\bigwork\lastwork\src\main.c", exit code: 2
+command: 
+  "D:\soft\Keil\C51\BIN\C51.exe" .\src\main.c OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.obj\src\main.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION='526') OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJECT(.\build\Release\.obj\src\main.o)
+   at unify_builder.Program.Main(String[] args_)
+---
+C51 COMPILER V9.59.0.0 - SN: Eval Version
+COPYRIGHT Copyright (C) 2012 - 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+*** ERROR C202 IN LINE 29 OF .\SRC\MAIN.C: 'second': undefined identifier
+*** ERROR C202 IN LINE 30 OF .\SRC\MAIN.C: 'second': undefined identifier
+*** ERROR C202 IN LINE 31 OF .\SRC\MAIN.C: 'second': undefined identifier
+*** ERROR C202 IN LINE 33 OF .\SRC\MAIN.C: 'second': undefined identifier
+*** ERROR C202 IN LINE 34 OF .\SRC\MAIN.C: 'minute': undefined identifier
+*** ERROR C202 IN LINE 35 OF .\SRC\MAIN.C: 'minute': undefined identifier
+*** ERROR C202 IN LINE 37 OF .\SRC\MAIN.C: 'minute': undefined identifier
+*** ERROR C202 IN LINE 38 OF .\SRC\MAIN.C: 'hour': undefined identifier
+*** ERROR C202 IN LINE 39 OF .\SRC\MAIN.C: 'hour': undefined identifier
+*** ERROR C202 IN LINE 41 OF .\SRC\MAIN.C: 'hour': undefined identifier
+*** ERROR C202 IN LINE 42 OF .\SRC\MAIN.C: 'day': undefined identifier
+*** ERROR C202 IN LINE 43 OF .\SRC\MAIN.C: 'day': undefined identifier
+*** ERROR C202 IN LINE 45 OF .\SRC\MAIN.C: 'day': undefined identifier
+*** ERROR C202 IN LINE 46 OF .\SRC\MAIN.C: 'month': undefined identifier
+*** ERROR C202 IN LINE 47 OF .\SRC\MAIN.C: 'month': undefined identifier
+*** ERROR C202 IN LINE 49 OF .\SRC\MAIN.C: 'month': undefined identifier
+*** ERROR C202 IN LINE 50 OF .\SRC\MAIN.C: 'year': undefined identifier
+*** ERROR C202 IN LINE 56 OF .\SRC\MAIN.C: 'year': undefined identifier
+*** ERROR C202 IN LINE 57 OF .\SRC\MAIN.C: 'hour': undefined identifier
+*** ERROR C202 IN LINE 78 OF .\SRC\MAIN.C: 'hour': undefined identifier
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  20 ERROR(S)
+
+[2024-01-21 18:17:43]	compilation failed at : "c:\Users\gavinccc\Desktop\bigwork\lastwork\src\main.c", exit code: 2
+command: 
+  "D:\soft\Keil\C51\BIN\C51.exe" .\src\main.c OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.obj\src\main.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION='526') OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJECT(.\build\Release\.obj\src\main.o)
+   at unify_builder.Program.Main(String[] args_)
+---
+C51 COMPILER V9.59.0.0 - SN: Eval Version
+COPYRIGHT Copyright (C) 2012 - 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+*** WARNING C206 IN LINE 77 OF .\SRC\MAIN.C: 'Timer': missing function-prototype
+*** ERROR C214 IN LINE 77 OF .\SRC\MAIN.C: illegal pointer conversion
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  1 ERROR(S)
+
+[2024-01-21 18:18:00]	link failed !, exit code: 2
+   at unify_builder.Program.Main(String[] args_)
+---
+
+LX51 LINKER/LOCATER V4.66.93.0 - SN: Eval Version
+COPYRIGHT ARM Germany GmbH 1995 - 2018
+@c:\Users\gavinccc\Desktop\bigwork\lastwork\build\Release\lastwork.lnp .\build\Release\.obj\src\Delay.o,.\build\Release\.obj\src\hander.o,.\build\Release\.obj\src\init.o,.\build\Release\.obj\src\main.o TO .\build\Release\lastwork
+PRINT(.\build\Release\lastwork.map) REMOVEUNUSED
+
+*** ERROR L127: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  EEPROMget
+    MODULE:  .\BUILD\RELEASE\.OBJ\SRC\MAIN.O (MAIN)
+
+*** ERROR L128: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  EEPROMget
+    MODULE:  .\BUILD\RELEASE\.OBJ\SRC\MAIN.O (MAIN)
+    ADDRESS: 10000F7H
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0204H BYTE (25%) *
+******************************************************************************
+
+Program Size: data=31.0 xdata=0 const=0 code=601
+LX51 RUN COMPLETE.  0 WARNING(S),  2 ERROR(S)
+
+
+[2024-01-21 18:18:12]	[done]
+	build successfully !
+
+[2024-01-21 18:20:11]	compilation failed at : "c:\Users\gavinccc\Desktop\bigwork\lastwork\src\main.c", exit code: 2
+command: 
+  "D:\soft\Keil\C51\BIN\C51.exe" .\src\main.c OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.obj\src\main.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION='526') OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJECT(.\build\Release\.obj\src\main.o)
+   at unify_builder.Program.Main(String[] args_)
+---
+C51 COMPILER V9.59.0.0 - SN: Eval Version
+COPYRIGHT Copyright (C) 2012 - 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+*** ERROR C202 IN LINE 122 OF .\SRC\MAIN.C: 'i': undefined identifier
+*** ERROR C202 IN LINE 124 OF .\SRC\MAIN.C: 'i': undefined identifier
+*** ERROR C202 IN LINE 126 OF .\SRC\MAIN.C: 'i': undefined identifier
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  3 ERROR(S)
+
+[2024-01-21 18:20:25]	[done]
+	build successfully !
+
+[2024-01-21 18:22:02]	compilation failed at : "c:\Users\gavinccc\Desktop\bigwork\lastwork\src\main.c", exit code: 2
+command: 
+  "D:\soft\Keil\C51\BIN\C51.exe" .\src\main.c OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.obj\src\main.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION='526') OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJECT(.\build\Release\.obj\src\main.o)
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+C51 COMPILER V9.59.0.0 - SN: Eval Version
+COPYRIGHT Copyright (C) 2012 - 2018 ARM Ltd and ARM Germany GmbH. All rights reserved.
+*** WARNING C206 IN LINE 30 OF .\SRC\MAIN.C: 'makeled': missing function-prototype
+*** ERROR C267 IN LINE 30 OF .\SRC\MAIN.C: 'makeled': requires ANSI-style prototype
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  1 ERROR(S)
+
+[2024-01-21 18:22:15]	[done]
+	build successfully !
+
+[2024-01-21 18:22:53]	[done]
+	build successfully !
+
+[2024-01-21 18:24:37]	[done]
+	build successfully !
+
+[2024-01-21 18:28:00]	[done]
+	build successfully !
+
+[2024-01-21 18:29:47]	[done]
+	build successfully !
+
+[2024-01-21 18:44:47]	[done]
+	build successfully !
+
+[2024-01-21 18:45:33]	[done]
+	build successfully !
+
+[2024-01-21 18:46:58]	[done]
+	build successfully !
+
+[2024-01-21 18:47:21]	[done]
+	build successfully !
+
+[2024-01-21 18:47:50]	[done]
+	build successfully !
+
+[2024-01-21 18:48:15]	[done]
+	build successfully !
+
+[2024-01-21 18:48:40]	[done]
+	build successfully !
+
+[2024-01-21 18:49:07]	[done]
+	build successfully !
+
+[2024-01-21 18:51:13]	[done]
+	build successfully !
+
+[2024-01-21 18:57:51]	[done]
+	build successfully !
+
+[2024-01-21 18:58:48]	[done]
+	build successfully !
+
+[2024-01-21 18:59:40]	[done]
+	build successfully !
+
+[2024-01-21 19:43:52]	[done]
+	build successfully !
+
+[2024-01-21 19:48:32]	[done]
+	build successfully !
+
+[2024-01-21 19:50:35]	[done]
+	build successfully !
+
+[2024-01-21 19:51:25]	[done]
+	build successfully !
+
+[2024-01-21 19:52:30]	[done]
+	build successfully !
+
+[2024-01-21 20:11:25]	[done]
+	build successfully !
+
+[2024-01-21 20:11:59]	[done]
+	build successfully !
+
+[2024-01-22 23:21:32]	[done]
+	build successfully !
+
+[2024-01-22 23:22:12]	[done]
+	build successfully !
+
+[2024-01-22 23:25:30]	[done]
+	build successfully !
+

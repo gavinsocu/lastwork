@@ -1,0 +1,254 @@
+C51 COMPILER V9.59.0.0   EEPROMMAKER                                                       01/22/2024 23:25:30 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE EEPROMMAKER
+OBJECT MODULE PLACED IN .\build\Release\.obj\src\EEPROMmaker.o
+COMPILER INVOKED BY: D:\soft\Keil\C51\BIN\C51.exe .\SRC\EEPROMMAKER.C OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Rel
+                    -ease\.obj\src\EEPROMmaker.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION=526) OPTIMIZE(8,SPEED) SMALL RO
+                    -M(LARGE) OBJECT(.\build\Release\.obj\src\EEPROMmaker.o)
+
+line level    source
+
+   1          #include "EEPROM.h"
+   2          #include "Timeio.h"
+   3          
+   4          void EEPROMmaker()
+   5          {
+   6   1          EEPROMErase(0X2000);
+   7   1          EEPROMWrite(0X2000, year/100);
+   8   1          EEPROMWrite(0X2002, year%100);
+   9   1          EEPROMWrite(0X2004, month);
+  10   1          EEPROMWrite(0X2006, day);
+  11   1          EEPROMWrite(0X2008, hour);
+  12   1          EEPROMWrite(0X2010, minute);
+  13   1          EEPROMWrite(0X2012, second);
+  14   1      }
+  15          
+  16          void EEPROMget()
+  17          {
+  18   1          year = EEPROMRead(0X2000)*100 + EEPROMRead(0X2002);
+  19   1          month = EEPROMRead(0X2004);
+  20   1          day = EEPROMRead(0X2006);
+  21   1          hour = EEPROMRead(0X2008);
+  22   1          minute = EEPROMRead(0X2010);
+  23   1          second = EEPROMRead(0X2012);
+  24   1          hour1 = EEPROMRead(0x2200);
+  25   1          minute1 = EEPROMRead(0x2202);
+  26   1          second1 = EEPROMRead(0x2204);
+  27   1      }
+  28          
+  29          void EEPROMclock()
+  30          {
+  31   1          EEPROMErase(0X2200);
+  32   1          EEPROMWrite(0x2200, hour1);
+  33   1          EEPROMWrite(0x2202, minute1);
+  34   1          EEPROMWrite(0x2204, second1);
+  35   1      }
+C51 COMPILER V9.59.0.0   EEPROMMAKER                                                       01/22/2024 23:25:30 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION EEPROMmaker (BEGIN)
+                                           ; SOURCE LINE # 4
+                                           ; SOURCE LINE # 5
+                                           ; SOURCE LINE # 6
+0000 7F00              MOV     R7,#00H
+0002 7E20              MOV     R6,#020H
+0004 120000      E     LCALL   _EEPROMErase
+                                           ; SOURCE LINE # 7
+0007 AE00        E     MOV     R6,year
+0009 AF00        E     MOV     R7,year+01H
+000B 7C00              MOV     R4,#00H
+000D 7D64              MOV     R5,#064H
+000F 120000      E     LCALL   ?C?SIDIV
+0012 AD07              MOV     R5,AR7
+0014 7F00              MOV     R7,#00H
+0016 7E20              MOV     R6,#020H
+0018 120000      E     LCALL   _EEPROMWrite
+                                           ; SOURCE LINE # 8
+001B AE00        E     MOV     R6,year
+001D AF00        E     MOV     R7,year+01H
+001F 7C00              MOV     R4,#00H
+0021 7D64              MOV     R5,#064H
+0023 120000      E     LCALL   ?C?SIDIV
+0026 7F02              MOV     R7,#02H
+0028 7E20              MOV     R6,#020H
+002A 120000      E     LCALL   _EEPROMWrite
+                                           ; SOURCE LINE # 9
+002D AD00        E     MOV     R5,month+01H
+002F 7F04              MOV     R7,#04H
+0031 7E20              MOV     R6,#020H
+0033 120000      E     LCALL   _EEPROMWrite
+                                           ; SOURCE LINE # 10
+0036 AD00        E     MOV     R5,day+01H
+0038 7F06              MOV     R7,#06H
+003A 7E20              MOV     R6,#020H
+003C 120000      E     LCALL   _EEPROMWrite
+                                           ; SOURCE LINE # 11
+003F AD00        E     MOV     R5,hour+01H
+0041 7F08              MOV     R7,#08H
+0043 7E20              MOV     R6,#020H
+0045 120000      E     LCALL   _EEPROMWrite
+                                           ; SOURCE LINE # 12
+0048 AD00        E     MOV     R5,minute+01H
+004A 7F10              MOV     R7,#010H
+004C 7E20              MOV     R6,#020H
+004E 120000      E     LCALL   _EEPROMWrite
+                                           ; SOURCE LINE # 13
+0051 AD00        E     MOV     R5,second+01H
+0053 7F12              MOV     R7,#012H
+0055 7E20              MOV     R6,#020H
+0057 020000      E     LJMP    _EEPROMWrite
+             ; FUNCTION EEPROMmaker (END)
+
+             ; FUNCTION EEPROMget (BEGIN)
+                                           ; SOURCE LINE # 16
+                                           ; SOURCE LINE # 17
+                                           ; SOURCE LINE # 18
+0000 7F00              MOV     R7,#00H
+0002 7E20              MOV     R6,#020H
+C51 COMPILER V9.59.0.0   EEPROMMAKER                                                       01/22/2024 23:25:30 PAGE 3   
+
+0004 120000      E     LCALL   _EEPROMRead
+0007 EF                MOV     A,R7
+0008 75F064            MOV     B,#064H
+000B A4                MUL     AB
+000C FF                MOV     R7,A
+000D AEF0              MOV     R6,B
+000F C006              PUSH    AR6
+0011 C007              PUSH    AR7
+0013 7F02              MOV     R7,#02H
+0015 7E20              MOV     R6,#020H
+0017 120000      E     LCALL   _EEPROMRead
+001A EF                MOV     A,R7
+001B FD                MOV     R5,A
+001C D0E0              POP     ACC
+001E 2D                ADD     A,R5
+001F F500        E     MOV     year+01H,A
+0021 D0E0              POP     ACC
+0023 3400              ADDC    A,#00H
+0025 F500        E     MOV     year,A
+                                           ; SOURCE LINE # 19
+0027 7F04              MOV     R7,#04H
+0029 7E20              MOV     R6,#020H
+002B 120000      E     LCALL   _EEPROMRead
+002E 750000      E     MOV     month,#00H
+0031 8F00        E     MOV     month+01H,R7
+                                           ; SOURCE LINE # 20
+0033 7F06              MOV     R7,#06H
+0035 7E20              MOV     R6,#020H
+0037 120000      E     LCALL   _EEPROMRead
+003A 750000      E     MOV     day,#00H
+003D 8F00        E     MOV     day+01H,R7
+                                           ; SOURCE LINE # 21
+003F 7F08              MOV     R7,#08H
+0041 7E20              MOV     R6,#020H
+0043 120000      E     LCALL   _EEPROMRead
+0046 750000      E     MOV     hour,#00H
+0049 8F00        E     MOV     hour+01H,R7
+                                           ; SOURCE LINE # 22
+004B 7F10              MOV     R7,#010H
+004D 7E20              MOV     R6,#020H
+004F 120000      E     LCALL   _EEPROMRead
+0052 750000      E     MOV     minute,#00H
+0055 8F00        E     MOV     minute+01H,R7
+                                           ; SOURCE LINE # 23
+0057 7F12              MOV     R7,#012H
+0059 7E20              MOV     R6,#020H
+005B 120000      E     LCALL   _EEPROMRead
+005E 750000      E     MOV     second,#00H
+0061 8F00        E     MOV     second+01H,R7
+                                           ; SOURCE LINE # 24
+0063 7F00              MOV     R7,#00H
+0065 7E22              MOV     R6,#022H
+0067 120000      E     LCALL   _EEPROMRead
+006A 750000      E     MOV     hour1,#00H
+006D 8F00        E     MOV     hour1+01H,R7
+                                           ; SOURCE LINE # 25
+006F 7F02              MOV     R7,#02H
+0071 7E22              MOV     R6,#022H
+0073 120000      E     LCALL   _EEPROMRead
+0076 750000      E     MOV     minute1,#00H
+0079 8F00        E     MOV     minute1+01H,R7
+                                           ; SOURCE LINE # 26
+C51 COMPILER V9.59.0.0   EEPROMMAKER                                                       01/22/2024 23:25:30 PAGE 4   
+
+007B 7F04              MOV     R7,#04H
+007D 7E22              MOV     R6,#022H
+007F 120000      E     LCALL   _EEPROMRead
+0082 750000      E     MOV     second1,#00H
+0085 8F00        E     MOV     second1+01H,R7
+                                           ; SOURCE LINE # 27
+0087 22                RET     
+             ; FUNCTION EEPROMget (END)
+
+             ; FUNCTION EEPROMclock (BEGIN)
+                                           ; SOURCE LINE # 29
+                                           ; SOURCE LINE # 30
+                                           ; SOURCE LINE # 31
+0000 7F00              MOV     R7,#00H
+0002 7E22              MOV     R6,#022H
+0004 120000      E     LCALL   _EEPROMErase
+                                           ; SOURCE LINE # 32
+0007 AD00        E     MOV     R5,hour1+01H
+0009 7F00              MOV     R7,#00H
+000B 7E22              MOV     R6,#022H
+000D 120000      E     LCALL   _EEPROMWrite
+                                           ; SOURCE LINE # 33
+0010 AD00        E     MOV     R5,minute1+01H
+0012 7F02              MOV     R7,#02H
+0014 7E22              MOV     R6,#022H
+0016 120000      E     LCALL   _EEPROMWrite
+                                           ; SOURCE LINE # 34
+0019 AD00        E     MOV     R5,second1+01H
+001B 7F04              MOV     R7,#04H
+001D 7E22              MOV     R6,#022H
+001F 020000      E     LJMP    _EEPROMWrite
+             ; FUNCTION EEPROMclock (END)
+
+C51 COMPILER V9.59.0.0   EEPROMMAKER                                                       01/22/2024 23:25:30 PAGE 5   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+second . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+EEPROMget. . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+IAP_CMD. . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E5H  1
+minute . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+IAP_ADDRH. . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E3H  1
+IAP_ADDRL. . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E4H  1
+month. . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+second1. . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+year . . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+_EEPROMErase . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+day. . . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+hour . . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+IAP_CONTR. . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E7H  1
+minute1. . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+_EEPROMRead. . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+IAP_DATA . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E2H  1
+_EEPROMWrite . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+EEPROMclock. . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+EEPROMmaker. . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+hour1. . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+IAP_TRIG . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E6H  1
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    260    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

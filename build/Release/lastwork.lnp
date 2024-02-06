@@ -1,0 +1,2 @@
+.\build\Release\.obj\src\Clock.o,.\build\Release\.obj\src\Delay.o,.\build\Release\.obj\src\EEPROM.o,.\build\Release\.obj\src\EEPROMmaker.o,.\build\Release\.obj\src\Led.o,.\build\Release\.obj\src\Nixie.o,.\build\Release\.obj\src\Timeio.o,.\build\Release\.obj\src\hander.o,.\build\Release\.obj\src\init.o,.\build\Release\.obj\src\main.o TO .\build\Release\lastwork
+PRINT(.\build\Release\lastwork.map) REMOVEUNUSED

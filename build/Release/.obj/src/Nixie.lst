@@ -1,0 +1,226 @@
+C51 COMPILER V9.59.0.0   NIXIE                                                             01/22/2024 23:25:30 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE NIXIE
+OBJECT MODULE PLACED IN .\build\Release\.obj\src\Nixie.o
+COMPILER INVOKED BY: D:\soft\Keil\C51\BIN\C51.exe .\SRC\NIXIE.C OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.
+                    -obj\src\Nixie.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION=526) OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJ
+                    -ECT(.\build\Release\.obj\src\Nixie.o)
+
+line level    source
+
+   1          #include "Delay.h"
+   2          #include <REG52.H>
+   3          
+   4          sbit seg1 = P2^3;       //数码管时间进入标志号
+   5          sbit seg2 = P2^2;       //数码管时间进入标志号
+   6          sbit seg3 = P2^1;
+   7          sbit seg4 = P2^0;
+   8          //数码管段码表
+   9          unsigned char code NixieTable[]={0x03,0x9F,0x25,0x0D,0x99,0x49,0x41,0x1F,0x01,0x09};
+  10          
+  11          
+  12          //数码管显示子函数
+  13          void Nixie(unsigned char Location,Number)
+  14          {
+  15   1          switch(Location)        //位码输出
+  16   1          {
+  17   2              case 1:seg1 = 0,seg2 = 1,seg3 = 1,seg4 = 1;break;
+  18   2              case 2:seg1 = 1,seg2 = 0,seg3 = 1,seg4 = 1;break;
+  19   2              case 3:seg1 = 1,seg2 = 1,seg3 = 0,seg4 = 1;break;
+  20   2              case 4:seg1 = 1,seg2 = 1,seg3 = 1,seg4 = 0;break;
+  21   2          }
+  22   1          P0=NixieTable[Number];  //段码输出
+  23   1          Delay(1);               //显示一段时�?
+  24   1          P0=~0x0;                //段码�?0，消�?
+  25   1      }
+C51 COMPILER V9.59.0.0   NIXIE                                                             01/22/2024 23:25:30 PAGE 2   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION _Nixie (BEGIN)
+                                           ; SOURCE LINE # 13
+;---- Variable 'Number' assigned to Register 'R4/R5' ----
+;---- Variable 'Location' assigned to Register 'R7' ----
+                                           ; SOURCE LINE # 14
+                                           ; SOURCE LINE # 15
+0000 EF                MOV     A,R7
+0001 24FE              ADD     A,#0FEH
+0003 6010              JZ      ?C0003
+0005 14                DEC     A
+0006 6017              JZ      ?C0004
+0008 14                DEC     A
+0009 601E              JZ      ?C0005
+000B 2403              ADD     A,#03H
+000D 7022              JNZ     ?C0001
+                                           ; SOURCE LINE # 16
+                                           ; SOURCE LINE # 17
+000F         ?C0002:
+000F C2A3              CLR     seg1
+0011 D2A2              SETB    seg2
+0013 8004              SJMP    ?C0007
+                                           ; SOURCE LINE # 18
+0015         ?C0003:
+0015 D2A3              SETB    seg1
+0017 C2A2              CLR     seg2
+0019         ?C0007:
+0019 D2A1              SETB    seg3
+001B D2A0              SETB    seg4
+001D 8012              SJMP    ?C0001
+                                           ; SOURCE LINE # 19
+001F         ?C0004:
+001F D2A3              SETB    seg1
+0021 D2A2              SETB    seg2
+0023 C2A1              CLR     seg3
+0025 D2A0              SETB    seg4
+0027 8008              SJMP    ?C0001
+                                           ; SOURCE LINE # 20
+0029         ?C0005:
+0029 D2A3              SETB    seg1
+002B D2A2              SETB    seg2
+002D D2A1              SETB    seg3
+002F C2A0              CLR     seg4
+                                           ; SOURCE LINE # 21
+0031         ?C0001:
+                                           ; SOURCE LINE # 22
+0031 7400        R     MOV     A,#LOW NixieTable
+0033 2D                ADD     A,R5
+0034 F582              MOV     DPL,A
+0036 7400        R     MOV     A,#HIGH NixieTable
+0038 3C                ADDC    A,R4
+0039 F583              MOV     DPH,A
+003B E4                CLR     A
+003C 93                MOVC    A,@A+DPTR
+003D F580              MOV     P0,A
+                                           ; SOURCE LINE # 23
+003F 7F01              MOV     R7,#01H
+0041 7E00              MOV     R6,#00H
+0043 120000      E     LCALL   _Delay
+                                           ; SOURCE LINE # 24
+C51 COMPILER V9.59.0.0   NIXIE                                                             01/22/2024 23:25:30 PAGE 3   
+
+0046 7580FF            MOV     P0,#0FFH
+                                           ; SOURCE LINE # 25
+0049 22                RET     
+             ; FUNCTION _Nixie (END)
+
+C51 COMPILER V9.59.0.0   NIXIE                                                             01/22/2024 23:25:30 PAGE 4   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+_Nixie . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  Location . . . . . . . . . . . . . .  * REG *  DATA   U_CHAR   0007H  1
+  Number . . . . . . . . . . . . . . .  * REG *  DATA   INT      0004H  2
+P0 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0080H  1
+P1 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0090H  1
+P2 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A0H  1
+P3 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B0H  1
+T0 . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B4H  1
+AC . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D6H  1
+T1 . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B5H  1
+T2 . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0090H  1
+EA . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00AFH  1
+IE . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A8H  1
+EXF2 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CEH  1
+RD . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B7H  1
+ES . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00ACH  1
+IP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B8H  1
+RI . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0098H  1
+INT0 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B2H  1
+CY . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D7H  1
+TI . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0099H  1
+INT1 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B3H  1
+RCAP2H . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CBH  1
+PS . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00BCH  1
+SP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0081H  1
+T2EX . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0091H  1
+OV . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D2H  1
+RCAP2L . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CAH  1
+C_T2 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00C9H  1
+WR . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B6H  1
+RCLK . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CDH  1
+TCLK . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CCH  1
+SBUF . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0099H  1
+PCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0087H  1
+SCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0098H  1
+TMOD . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0089H  1
+TCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0088H  1
+IE0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0089H  1
+IE1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008BH  1
+B. . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00F0H  1
+CP_RL2 . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00C8H  1
+ACC. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E0H  1
+ET0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00A9H  1
+ET1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00ABH  1
+TF0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008DH  1
+ET2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00ADH  1
+TF1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008FH  1
+TF2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CFH  1
+RB8. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009AH  1
+TH0. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008CH  1
+EX0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00A8H  1
+IT0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0088H  1
+TH1. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008DH  1
+TB8. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009BH  1
+EX1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00AAH  1
+IT1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008AH  1
+TH2. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CDH  1
+C51 COMPILER V9.59.0.0   NIXIE                                                             01/22/2024 23:25:30 PAGE 5   
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+P. . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D0H  1
+SM0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009FH  1
+TL0. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008AH  1
+SM1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009EH  1
+TL1. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008BH  1
+SM2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009DH  1
+TL2. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CCH  1
+PT0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B9H  1
+PT1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00BBH  1
+RS0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D3H  1
+PT2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00BDH  1
+TR0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008CH  1
+RS1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D4H  1
+TR1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008EH  1
+TR2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CAH  1
+PX0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B8H  1
+PX1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00BAH  1
+DPH. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0083H  1
+DPL. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0082H  1
+EXEN2. . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CBH  1
+REN. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009CH  1
+T2CON. . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00C8H  1
+NixieTable . . . . . . . . . . . . . .  PUBLIC   CODE   ARRAY    0000H  10
+RXD. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B0H  1
+TXD. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B1H  1
+seg1 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00A3H  1
+_Delay . . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+seg2 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00A2H  1
+seg3 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00A1H  1
+seg4 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00A0H  1
+F0 . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D5H  1
+PSW. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D0H  1
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     74    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

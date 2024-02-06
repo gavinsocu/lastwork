@@ -1,0 +1,606 @@
+LX51 LINKER/LOCATER V4.66.93.0                                                          01/22/2024  23:22:12  PAGE 1
+
+
+LX51 LINKER/LOCATER V4.66.93.0, INVOKED BY:
+D:\SOFT\KEIL\C51\BIN\LX51.EXE .\BUILD\RELEASE\.OBJ\SRC\CLOCK.O, .\BUILD\RELEASE\.OBJ\SRC\DELAY.O, .\BUILD\RELEASE\.OBJ\S
+>> RC\EEPROM.O, .\BUILD\RELEASE\.OBJ\SRC\EEPROMMAKER.O, .\BUILD\RELEASE\.OBJ\SRC\LED.O, .\BUILD\RELEASE\.OBJ\SRC\NIXIE.O
+>> , .\BUILD\RELEASE\.OBJ\SRC\TIMEIO.O, .\BUILD\RELEASE\.OBJ\SRC\HANDER.O, .\BUILD\RELEASE\.OBJ\SRC\INIT.O, .\BUILD\RELE
+>> ASE\.OBJ\SRC\MAIN.O TO .\BUILD\RELEASE\LASTWORK PRINT (.\build\Release\lastwork.map) REMOVEUNUSED
+
+
+CPU MODE:     8051 MODE
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\BUILD\RELEASE\.OBJ\SRC\CLOCK.O (CLOCK)
+         COMMENT TYPE 0: C51 V9.59.0.0
+  .\BUILD\RELEASE\.OBJ\SRC\DELAY.O (DELAY)
+         COMMENT TYPE 0: C51 V9.59.0.0
+  .\BUILD\RELEASE\.OBJ\SRC\EEPROM.O (EEPROM)
+         COMMENT TYPE 0: C51 V9.59.0.0
+  .\BUILD\RELEASE\.OBJ\SRC\EEPROMMAKER.O (EEPROMMAKER)
+         COMMENT TYPE 0: C51 V9.59.0.0
+  .\BUILD\RELEASE\.OBJ\SRC\LED.O (LED)
+         COMMENT TYPE 0: C51 V9.59.0.0
+  .\BUILD\RELEASE\.OBJ\SRC\NIXIE.O (NIXIE)
+         COMMENT TYPE 0: C51 V9.59.0.0
+  .\BUILD\RELEASE\.OBJ\SRC\TIMEIO.O (TIMEIO)
+         COMMENT TYPE 0: C51 V9.59.0.0
+  .\BUILD\RELEASE\.OBJ\SRC\HANDER.O (HANDER)
+         COMMENT TYPE 0: C51 V9.59.0.0
+  .\BUILD\RELEASE\.OBJ\SRC\INIT.O (INIT)
+         COMMENT TYPE 0: C51 V9.59.0.0
+  .\BUILD\RELEASE\.OBJ\SRC\MAIN.O (MAIN)
+         COMMENT TYPE 0: C51 V9.59.0.0
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C?SCDIV)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C?CLDPTR)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C?CLDOPTR)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C?SIDIV)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C?OFFXADD)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (PRINTF)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C?STRCMP)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (ATOI)
+         COMMENT TYPE 1: C51 Compiler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C?CSTPTR)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C?IMUL)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C?UIDIV)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C?PLDIIDATA)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (?C?CCASE)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (PUTCHAR)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (ISDIGIT)
+         COMMENT TYPE 1: C51 Compiler
+LX51 LINKER/LOCATER V4.66.93.0                                                        01/22/2024  23:22:12  PAGE 2
+
+
+  D:\SOFT\KEIL\C51\LIB\C51S.LIB (ISSPACE)
+         COMMENT TYPE 1: C51 Compiler
+
+
+ACTIVE MEMORY CLASSES OF MODULE:  .\BUILD\RELEASE\LASTWORK (CLOCK)
+
+BASE        START       END         USED      MEMORY CLASS
+==========================================================
+C:000000H   C:000000H   C:00FFFFH   000EDDH   CODE
+I:000000H   I:000000H   I:00007FH   000078H   DATA
+C:000000H   C:000000H   C:00FFFFH   00008FH   CONST
+I:000020H.0 I:000020H.0 I:00002FH.7 000001H.3 BIT
+I:000000H   I:000000H   I:0000FFH   000001H   IDATA
+
+
+MEMORY MAP OF MODULE:  .\BUILD\RELEASE\LASTWORK (CLOCK)
+
+
+START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
+=========================================================================
+
+* * * * * * * * * * *   D A T A   M E M O R Y   * * * * * * * * * * * * *
+000000H   000007H   000008H   ---    AT..     DATA           "REG BANK 0"
+000008H   000019H   000012H   BYTE   UNIT     DATA           ?DT?TIMEIO
+00001AH.0 00001FH.7 000006H.0 ---    ---      **GAP**
+000020H.0 000021H.1 000001H.2 BIT    UNIT     BIT            _BIT_GROUP_
+000021H.2 000021H.2 000000H.1 BIT    UNIT     BIT            ?BI?MAIN
+000021H.3 000021H   000000H.5 ---    ---      **GAP**
+000022H   000053H   000032H   BYTE   UNIT     DATA           _DATA_GROUP_
+000054H   000072H   00001FH   BYTE   UNIT     DATA           ?DT?MAIN
+000073H   00007FH   00000DH   BYTE   UNIT     DATA           ?DT?HANDER
+000080H   000080H   000001H   BYTE   UNIT     IDATA          ?STACK
+
+* * * * * * * * * * *   C O D E   M E M O R Y   * * * * * * * * * * * * *
+000000H   000002H   000003H   ---    OFFS..   CODE           ?CO??C_STARTUP?0
+000003H   000005H   000003H   BYTE   OFFS..   CODE           ?MAIN?00003
+000006H   00000AH   000005H   ---    ---      **GAP**
+00000BH   00000DH   000003H   BYTE   OFFS..   CODE           ?MAIN?0000B
+00000EH   000019H   00000CH   BYTE   UNIT     CODE           ?PR?MAKEUART?MAIN
+00001AH   00001AH   000001H   ---    ---      **GAP**
+00001BH   00001DH   000003H   BYTE   OFFS..   CODE           ?MAIN?0001B
+00001EH   000311H   0002F4H   BYTE   UNIT     CODE           ?C?LIB_CODE
+000312H   00047BH   00016AH   BYTE   UNIT     CODE           ?PR?_TIMEIO?TIMEIO
+00047CH   000591H   000116H   BYTE   UNIT     CODE           ?PR?TIMER?MAIN
+000592H   000695H   000104H   BYTE   UNIT     CODE           ?PR?MAIN?MAIN
+000696H   000743H   0000AEH   BYTE   UNIT     CODE           ?PR?_ATOI?ATOI
+000744H   0007CBH   000088H   BYTE   UNIT     CODE           ?PR?EEPROMGET?EEPROMMAKER
+0007CCH   0007FDH   000032H   BYTE   UNIT     CODE           ?PR?_MAKELED?LED
+0007FEH   0007FFH   000002H   ---    ---      **GAP**
+000800H   000B5BH   00035CH   BYTE   UNIT     CODE           ?PR?PRINTF?PRINTF
+000B5CH   000BDFH   000084H   BYTE   UNIT     CODE           ?PR?MAKETIMER?MAIN
+000BE0H   000C39H   00005AH   BYTE   UNIT     CODE           ?PR?EEPROMMAKER?EEPROMMAKER
+000C3AH   000C6FH   000036H   BYTE   UNIT     CODE           ?PR?_NIXIE?NIXIE
+000C70H   000CA1H   000032H   BYTE   UNIT     CODE           ?PR?GETDATA?HANDER
+000CA2H   000CD2H   000031H   BYTE   UNIT     CODE           ?C_INITSEG
+000CD3H   000D03H   000031H   BYTE   UNIT     CODE           ?PR?_UARTHANDER?HANDER
+000D04H   000D2AH   000027H   BYTE   UNIT     CODE           ?PR?PUTCHAR?PUTCHAR
+000D2BH   000D4FH   000025H   BYTE   UNIT     CODE           ?PR?_UPDATEHANDER?HANDER
+000D50H   000D71H   000022H   BYTE   UNIT     CODE           ?PR?EEPROMCLOCK?EEPROMMAKER
+000D72H   000D8DH   00001CH   BYTE   UNIT     CODE           ?PR?MAKEHANDER?MAIN
+000D8EH   000DA8H   00001BH   BYTE   UNIT     CODE           ?PR?_CLOCK?CLOCK
+000DA9H   000DBEH   000016H   BYTE   UNIT     CODE           ?PR?_EEPROMWRITE?EEPROM
+000DBFH   000DD4H   000016H   BYTE   UNIT     CODE           ?PR?_EEPROMREAD?EEPROM
+000DD5H   000DE9H   000015H   BYTE   UNIT     CODE           ?PR?_DELAY?DELAY
+000DEAH   000DFDH   000014H   BYTE   UNIT     CODE           ?PR?_EEPROMERASE?EEPROM
+LX51 LINKER/LOCATER V4.66.93.0                                                        01/22/2024  23:22:12  PAGE 3
+
+
+000DFEH   000E10H   000013H   BYTE   UNIT     CODE           ?PR?_ISSPACE?ISSPACE
+000E11H   000E20H   000010H   BYTE   UNIT     CODE           ?PR?INITUART?INIT
+000E21H   000E2FH   00000FH   BYTE   UNIT     CODE           ?PR?_ISDIGIT?ISDIGIT
+000E30H   000E3AH   00000BH   BYTE   UNIT     CODE           ?PR?INITINTER?INIT
+000E3BH   000E43H   000009H   BYTE   UNIT     CODE           ?PR?INITTIMER?INIT
+000E44H   000E4BH   000008H   BYTE   UNIT     CODE           ?PR?EEPROMISABLE?EEPROM
+000E4CH   000E52H   000007H   BYTE   UNIT     CODE           ?PR?EEPROMINIT?EEPROM
+000E53H   000E58H   000006H   BYTE   UNIT     CODE           ?PR?WAITTF?DELAY
+000E59H   000EB9H   000061H   BYTE   UNIT     CONST          ?CO?MAIN
+000EBAH   000EDDH   000024H   BYTE   UNIT     CONST          ?CO?TIMEIO
+000EDEH   000EE7H   00000AH   BYTE   UNIT     CONST          ?CO?NIXIE
+000EE8H   001281H   00039AH   ---    ---      **GAP**
+001282H   00130DH   00008CH   BYTE   UNIT     CODE           ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\BUILD\RELEASE\LASTWORK (CLOCK)
+
+
+FUNCTION/MODULE               BIT_GROUP   DATA_GROUP 
+--> CALLED FUNCTION/MODULE   START  STOP  START  STOP
+=====================================================
+MAKEHANDER/MAIN              ----- -----  ----- -----
+
+*** NEW ROOT ***************
+
+MAKETIMER/MAIN               ----- -----  ----- -----
+  +--> TIMER/MAIN
+  +--> _UPDATEHANDER/HANDER
+  +--> _CLOCK/CLOCK
+  +--> EEPROMMAKER/EEPROMMAKER
+
+TIMER/MAIN                   ----- -----  0022H 0028H
+  +--> _MAKELED/LED
+  +--> PRINTF/PRINTF
+
+_MAKELED/LED                 ----- -----  ----- -----
+
+PRINTF/PRINTF                20H.0 21H.0  0029H 003CH
+  +--> PUTCHAR/PUTCHAR
+
+PUTCHAR/PUTCHAR              ----- -----  ----- -----
+
+_UPDATEHANDER/HANDER         ----- -----  0022H 0024H
+  +--> _UARTHANDER/HANDER
+
+_UARTHANDER/HANDER           ----- -----  0025H 0026H
+  +--> WAITTF/DELAY
+
+WAITTF/DELAY                 ----- -----  ----- -----
+
+_CLOCK/CLOCK                 ----- -----  0022H 002DH
+
+EEPROMMAKER/EEPROMMAKER      ----- -----  ----- -----
+  +--> _EEPROMERASE/EEPROM
+  +--> _EEPROMWRITE/EEPROM
+
+_EEPROMERASE/EEPROM          ----- -----  ----- -----
+  +--> EEPROMINIT/EEPROM
+  +--> EEPROMISABLE/EEPROM
+
+EEPROMINIT/EEPROM            ----- -----  ----- -----
+
+EEPROMISABLE/EEPROM          ----- -----  ----- -----
+
+LX51 LINKER/LOCATER V4.66.93.0                                                        01/22/2024  23:22:12  PAGE 4
+
+
+_EEPROMWRITE/EEPROM          ----- -----  ----- -----
+  +--> EEPROMINIT/EEPROM
+  +--> EEPROMISABLE/EEPROM
+
+*** NEW ROOT ***************
+
+MAKEUART/MAIN                ----- -----  ----- -----
+
+*** NEW ROOT ***************
+
+?C_C51STARTUP                ----- -----  ----- -----
+  +--> MAIN/MAIN
+  +--> ?C_INITSEG
+
+MAIN/MAIN                    ----- -----  003DH 003FH
+  +--> INITUART/INIT
+  +--> INITINTER/INIT
+  +--> INITTIMER/INIT
+  +--> EEPROMGET/EEPROMMAKER
+  +--> GETDATA/HANDER
+  +--> _TIMEIO/TIMEIO
+  +--> _NIXIE/NIXIE
+
+INITUART/INIT                ----- -----  ----- -----
+
+INITINTER/INIT               ----- -----  ----- -----
+
+INITTIMER/INIT               ----- -----  ----- -----
+
+EEPROMGET/EEPROMMAKER        ----- -----  ----- -----
+  +--> _EEPROMREAD/EEPROM
+
+_EEPROMREAD/EEPROM           ----- -----  ----- -----
+  +--> EEPROMINIT/EEPROM
+  +--> EEPROMISABLE/EEPROM
+
+GETDATA/HANDER               ----- -----  0040H 0041H
+  +--> WAITTF/DELAY
+
+_TIMEIO/TIMEIO               ----- -----  0040H 004EH
+  +--> _ATOI/ATOI
+  +--> EEPROMCLOCK/EEPROMMAKER
+
+_ATOI/ATOI                   21H.1 21H.1  004FH 0053H
+  +--> _ISSPACE/ISSPACE
+  +--> _ISDIGIT/ISDIGIT
+
+_ISSPACE/ISSPACE             ----- -----  ----- -----
+
+_ISDIGIT/ISDIGIT             ----- -----  ----- -----
+
+EEPROMCLOCK/EEPROMMAKER      ----- -----  ----- -----
+  +--> _EEPROMERASE/EEPROM
+  +--> _EEPROMWRITE/EEPROM
+
+_NIXIE/NIXIE                 ----- -----  ----- -----
+  +--> _DELAY/DELAY
+
+_DELAY/DELAY                 ----- -----  ----- -----
+
+?C_INITSEG                   ----- -----  ----- -----
+
+
+
+PUBLIC SYMBOLS OF MODULE:  .\BUILD\RELEASE\LASTWORK (CLOCK)
+LX51 LINKER/LOCATER V4.66.93.0                                                        01/22/2024  23:22:12  PAGE 5
+
+
+
+
+      VALUE       CLASS    TYPE      PUBLIC SYMBOL NAME
+      =================================================
+      00000022H   DATA     BYTE      ?_Clock?BYTE
+      00000029H   DATA     ---       ?_PRINTF517?BYTE
+      00000029H   DATA     ---       ?_PRINTF?BYTE
+      00000029H   DATA     ---       ?_SPRINTF517?BYTE
+      00000029H   DATA     ---       ?_SPRINTF?BYTE
+      010002ECH   CODE     ---       ?C?CCASE
+      01000059H   CODE     ---       ?C?CLDOPTR
+      01000040H   CODE     ---       ?C?CLDPTR
+      00000000H   NUMBER   ---       ?C?CODESEG
+      01000263H   CODE     ---       ?C?CSTPTR
+      01000275H   CODE     ---       ?C?IMUL
+      010000BCH   CODE     ---       ?C?OFFXADD
+      010002DCH   CODE     ---       ?C?PLDIIDATA
+      0100001EH   CODE     ---       ?C?SCDIV
+      01000086H   CODE     ---       ?C?SIDIV
+      01000246H   CODE     ---       ?C?STRCMP
+      01000287H   CODE     ---       ?C?UIDIV
+      00000000H   NUMBER   ---       ?C?XDATASEG
+      010012C9H   CODE     ---       ?C_START
+      01000000H   CODE     ---       ?C_STARTUP
+      01000696H   CODE     ---       _atoi
+      01000D8EH   CODE     ---       _Clock
+      01000DD5H   CODE     ---       _Delay
+      01000DEAH   CODE     ---       _EEPROMErase
+      01000DBFH   CODE     ---       _EEPROMRead
+      01000DA9H   CODE     ---       _EEPROMWrite
+      01000E21H   CODE     ---       _isdigit
+      01000DFEH   CODE     ---       _isspace
+      010007CCH   CODE     ---       _makeled
+      01000C3AH   CODE     ---       _Nixie
+      01000862H   CODE     ---       _PRINTF
+      01000862H   CODE     ---       _PRINTF517
+      01000D04H   CODE     ---       _PUTCHAR
+      0100085CH   CODE     ---       _SPRINTF
+      0100085CH   CODE     ---       _SPRINTF517
+      01000312H   CODE     ---       _timeio
+      01000CD3H   CODE     ---       _uarthander
+      01000D2BH   CODE     ---       _updatehander
+      00000074H   DATA     ---       buffer
+      00000012H   DATA     INT       day
+      01000D50H   CODE     ---       EEPROMclock
+      01000744H   CODE     ---       EEPROMget
+      01000BE0H   CODE     ---       EEPROMmaker
+      01000C70H   CODE     ---       getdata
+      00000073H   DATA     BYTE      getnum
+      00000014H   DATA     INT       hour
+      00000018H   DATA     INT       hour1
+      01000E30H   CODE     ---       initinter
+      01000E3BH   CODE     ---       inittimer
+      01000E11H   CODE     ---       inituart
+      01000592H   CODE     ---       main
+      01000D72H   CODE     ---       makeHander
+      01000B5CH   CODE     ---       makeTimer
+      0100000EH   CODE     ---       makeUart
+      01000E99H   CONST    ---       mclass
+      0000000AH   DATA     INT       minute
+      00000016H   DATA     INT       minute1
+      0000000CH   DATA     INT       month
+      01000EDEH   CONST    ---       NixieTable
+      00000021H.2 BIT      BIT       runOtherFunctions
+      00000008H   DATA     INT       second
+LX51 LINKER/LOCATER V4.66.93.0                                                        01/22/2024  23:22:12  PAGE 6
+
+
+      0000000EH   DATA     INT       second1
+      0100047CH   CODE     ---       Timer
+      01000E53H   CODE     ---       waittf
+      01000EA5H   CONST    ---       weekclass
+      00000010H   DATA     INT       year
+
+
+
+SYMBOL TABLE OF MODULE:  .\BUILD\RELEASE\LASTWORK (CLOCK)
+
+      VALUE       REP       CLASS    TYPE      SYMBOL NAME
+      ====================================================
+      ---         MODULE    ---      ---       CLOCK
+      00000022H   PUBLIC    DATA     BYTE      ?_Clock?BYTE
+      01000D8EH   PUBLIC    CODE     ---       _Clock
+
+      01000D8EH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       DELAY
+      01000E53H   PUBLIC    CODE     ---       waittf
+      01000DD5H   PUBLIC    CODE     ---       _Delay
+
+      01000DD5H   BLOCK     CODE     ---       LVL=0
+      01000DD5H   BLOCK     CODE     NEAR LAB  LVL=1
+      00000005H   SYMBOL    DATA     VOID      i
+      00000004H   SYMBOL    DATA     VOID      j
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000E53H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       EEPROM
+      01000DBFH   PUBLIC    CODE     ---       _EEPROMRead
+      01000DA9H   PUBLIC    CODE     ---       _EEPROMWrite
+      01000DEAH   PUBLIC    CODE     ---       _EEPROMErase
+
+      01000E4CH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000E44H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000DEAH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000DA9H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000DBFH   BLOCK     CODE     ---       LVL=0
+      01000DC3H   BLOCK     CODE     NEAR LAB  LVL=1
+      00000007H   SYMBOL    DATA     VOID      dat
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       EEPROMMAKER
+      01000D50H   PUBLIC    CODE     ---       EEPROMclock
+      01000744H   PUBLIC    CODE     ---       EEPROMget
+      01000BE0H   PUBLIC    CODE     ---       EEPROMmaker
+
+      01000BE0H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000744H   BLOCK     CODE     ---       LVL=0
+LX51 LINKER/LOCATER V4.66.93.0                                                        01/22/2024  23:22:12  PAGE 7
+
+
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000D50H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       LED
+      010007CCH   PUBLIC    CODE     ---       _makeled
+
+      010007CCH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       NIXIE
+      01000EDEH   PUBLIC    CONST    ---       NixieTable
+      01000C3AH   PUBLIC    CODE     ---       _Nixie
+
+      01000C3AH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       TIMEIO
+      00000018H   PUBLIC    DATA     INT       hour1
+      00000016H   PUBLIC    DATA     INT       minute1
+      00000014H   PUBLIC    DATA     INT       hour
+      00000012H   PUBLIC    DATA     INT       day
+      00000010H   PUBLIC    DATA     INT       year
+      0000000EH   PUBLIC    DATA     INT       second1
+      0000000CH   PUBLIC    DATA     INT       month
+      0000000AH   PUBLIC    DATA     INT       minute
+      00000008H   PUBLIC    DATA     INT       second
+      01000312H   PUBLIC    CODE     ---       _timeio
+
+      01000312H   BLOCK     CODE     ---       LVL=0
+      01000318H   BLOCK     CODE     NEAR LAB  LVL=1
+      00000006H   SYMBOL    DATA     VOID      i
+      00000043H   SYMBOL    DATA     VOID      j
+      00000045H   SYMBOL    DATA     VOID      makestr
+      0000004CH   SYMBOL    DATA     VOID      value
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       HANDER
+      00000074H   PUBLIC    DATA     ---       buffer
+      00000073H   PUBLIC    DATA     BYTE      getnum
+      01000C70H   PUBLIC    CODE     ---       getdata
+      01000D2BH   PUBLIC    CODE     ---       _updatehander
+      01000CD3H   PUBLIC    CODE     ---       _uarthander
+
+      01000CD3H   BLOCK     CODE     ---       LVL=0
+      01000CD5H   BLOCK     CODE     NEAR LAB  LVL=1
+      00000026H   SYMBOL    DATA     VOID      i
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000D2BH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000C70H   BLOCK     CODE     ---       LVL=0
+      01000C70H   BLOCK     CODE     NEAR LAB  LVL=1
+      00000040H   SYMBOL    DATA     VOID      i
+      00000041H   SYMBOL    DATA     VOID      str
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       INIT
+      01000E3BH   PUBLIC    CODE     ---       inittimer
+      01000E30H   PUBLIC    CODE     ---       initinter
+LX51 LINKER/LOCATER V4.66.93.0                                                        01/22/2024  23:22:12  PAGE 8
+
+
+      01000E11H   PUBLIC    CODE     ---       inituart
+
+      01000E11H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000E30H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000E3BH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       MAIN
+      00000021H.2 PUBLIC    BIT      BIT       runOtherFunctions
+      01000EA5H   PUBLIC    CONST    ---       weekclass
+      01000E99H   PUBLIC    CONST    ---       mclass
+      01000592H   PUBLIC    CODE     ---       main
+      0100000EH   PUBLIC    CODE     ---       makeUart
+      01000B5CH   PUBLIC    CODE     ---       makeTimer
+      01000D72H   PUBLIC    CODE     ---       makeHander
+      0100047CH   PUBLIC    CODE     ---       Timer
+
+      0100047CH   BLOCK     CODE     ---       LVL=0
+      0100047CH   BLOCK     CODE     NEAR LAB  LVL=1
+      00000022H   SYMBOL    DATA     VOID      i
+      00000054H   SYMBOL    DATA     VOID      str
+      00000023H   SYMBOL    DATA     VOID      temp
+      00000026H   SYMBOL    DATA     VOID      temp1
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000D72H   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000B5CH   BLOCK     CODE     ---       LVL=0
+      01000B79H   BLOCK     CODE     NEAR LAB  LVL=1
+      00000070H   SYMBOL    DATA     VOID      flag
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100000EH   BLOCK     CODE     ---       LVL=0
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000592H   BLOCK     CODE     ---       LVL=0
+      010005A3H   BLOCK     CODE     NEAR LAB  LVL=1
+      0000003DH   SYMBOL    DATA     VOID      maxnum
+      0000003FH   SYMBOL    DATA     VOID      i
+      ---         BLOCKEND  ---      ---       LVL=1
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       ?C_STARTUP
+      01000000H   PUBLIC    CODE     ---       ?C_STARTUP
+
+      ---         MODULE    ---      ---       ?C?SCDIV
+      0100001EH   PUBLIC    CODE     ---       ?C?SCDIV
+
+      ---         MODULE    ---      ---       ?C?CLDPTR
+      01000040H   PUBLIC    CODE     ---       ?C?CLDPTR
+
+      ---         MODULE    ---      ---       ?C?CLDOPTR
+      01000059H   PUBLIC    CODE     ---       ?C?CLDOPTR
+
+      ---         MODULE    ---      ---       ?C?SIDIV
+      01000086H   PUBLIC    CODE     ---       ?C?SIDIV
+
+      ---         MODULE    ---      ---       ?C?OFFXADD
+LX51 LINKER/LOCATER V4.66.93.0                                                        01/22/2024  23:22:12  PAGE 9
+
+
+      010000BCH   PUBLIC    CODE     ---       ?C?OFFXADD
+
+      ---         MODULE    ---      ---       PRINTF
+      00000029H   PUBLIC    DATA     ---       ?_PRINTF517?BYTE
+      00000029H   PUBLIC    DATA     ---       ?_PRINTF?BYTE
+      00000029H   PUBLIC    DATA     ---       ?_SPRINTF517?BYTE
+      00000029H   PUBLIC    DATA     ---       ?_SPRINTF?BYTE
+      01000862H   PUBLIC    CODE     ---       _PRINTF
+      01000862H   PUBLIC    CODE     ---       _PRINTF517
+      0100085CH   PUBLIC    CODE     ---       _SPRINTF
+      0100085CH   PUBLIC    CODE     ---       _SPRINTF517
+
+      ---         MODULE    ---      ---       ?C?STRCMP
+      01000246H   PUBLIC    CODE     ---       ?C?STRCMP
+
+      ---         MODULE    ---      ---       ATOI
+      01000696H   PUBLIC    CODE     ---       _ATOI
+
+      ---         MODULE    ---      ---       ?C_INIT
+      010012C9H   PUBLIC    CODE     ---       ?C_START
+
+      ---         MODULE    ---      ---       ?C?CSTPTR
+      01000263H   PUBLIC    CODE     ---       ?C?CSTPTR
+
+      ---         MODULE    ---      ---       ?C?IMUL
+      01000275H   PUBLIC    CODE     ---       ?C?IMUL
+
+      ---         MODULE    ---      ---       ?C?UIDIV
+      01000287H   PUBLIC    CODE     ---       ?C?UIDIV
+
+      ---         MODULE    ---      ---       ?C?PLDIIDATA
+      010002DCH   PUBLIC    CODE     ---       ?C?PLDIIDATA
+
+      ---         MODULE    ---      ---       ?C?CCASE
+      010002ECH   PUBLIC    CODE     ---       ?C?CCASE
+
+      ---         MODULE    ---      ---       PUTCHAR
+      01000D04H   PUBLIC    CODE     ---       _PUTCHAR
+
+      ---         MODULE    ---      ---       ISDIGIT
+      01000E21H   PUBLIC    CODE     ---       _ISDIGIT
+
+      ---         MODULE    ---      ---       ISSPACE
+      01000DFEH   PUBLIC    CODE     ---       _ISSPACE
+
+
+
+*** WARNING L25: DATA TYPES DIFFERENT
+    SYMBOL:  buffer
+    MODULE:  .\BUILD\RELEASE\.OBJ\SRC\MAIN.O (MAIN)
+   DEFINED:  .\BUILD\RELEASE\.OBJ\SRC\HANDER.O (HANDER)
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0795H BYTE (94%) *
+******************************************************************************
+
+Program Size: data=122.3 xdata=0 const=143 code=3805
+LX51 RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

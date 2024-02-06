@@ -1,0 +1,23 @@
+>>> cc
+
+
+
+>>> ld
+
+
+LX51 LINKER/LOCATER V4.66.93.0 - SN: Eval Version
+COPYRIGHT ARM Germany GmbH 1995 - 2018
+@c:\Users\gavinccc\Desktop\bigwork\lastwork\build\Release\lastwork.lnp .\build\Release\.obj\src\Clock.o,.\build\Release\.obj\src\Delay.o,.\build\Release\.obj\src\EEPROM.o,.\build\Release\.obj\src\EEPROMmaker.o,.\build\Release\.obj\src\Led.o,.\build\Release\.obj\src\Nixie.o,.\build\Release\.obj\src\Timeio.o,.\build\Release\.obj\src\hander.o,.\build\Release\.obj\src\init.o,.\build\Release\.obj\src\main.o TO .\build\Release\lastwork
+PRINT(.\build\Release\lastwork.map) REMOVEUNUSED
+
+*** WARNING L25: DATA TYPES DIFFERENT
+    SYMBOL:  buffer
+    MODULE:  .\BUILD\RELEASE\.OBJ\SRC\MAIN.O (MAIN)
+   DEFINED:  .\BUILD\RELEASE\.OBJ\SRC\HANDER.O (HANDER)
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 07A9H BYTE (95%) *
+******************************************************************************
+
+Program Size: data=122.3 xdata=0 const=143 code=3825
+LX51 RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,825 @@
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\build\Release\.obj\src\main.o
+COMPILER INVOKED BY: D:\soft\Keil\C51\BIN\C51.exe .\SRC\MAIN.C OMF2 TABS(4) CODE NOCOND SYMBOLS PRINT(.\build\Release\.o
+                    -bj\src\main.lst) INCDIR(D:/soft/Keil/C51/INC;src) DEFINE(__UVISION_VERSION=526) OPTIMIZE(8,SPEED) SMALL ROM(LARGE) OBJEC
+                    -T(.\build\Release\.obj\src\main.o)
+
+line level    source
+
+   1          #include <REG52.H>
+   2          #include <stdio.h>
+   3          #include "Delay.h"
+   4          #include "Led.h"
+   5          #include "Nixie.h"
+   6          #include "init.h"
+   7          #include "hander.h"
+   8          #include "Timeio.h"
+   9          #include "Clock.h"
+  10          #include "EEPROMmaker.h"
+  11          
+  12          
+  13          sbit beep = P1^0;
+  14          sbit RXD2 = P3^0;   
+  15          sbit TXD2 = P3^1;
+  16          
+  17          static char flag1 = 1;
+  18          bit runOtherFunctions = 1;
+  19          
+  20          
+  21          char code mclass[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+  22          char* code weekclass[] = {"Mon","Tues","Wed","Thur","Fri","Sat","Sun"};
+  23          
+  24          char* Timer()
+  25          {
+  26   1          char i = 0;
+  27   1          static char str[28];
+  28   1          char* temp = str;
+  29   1          char* temp1 = str + 11;
+  30   1          second++;
+  31   1          makeled(second);
+  32   1          if(second == 60)
+  33   1          {
+  34   2              second = 0;
+  35   2              minute++;
+  36   2              if(minute == 60)
+  37   2              {
+  38   3                  minute = 0;
+  39   3                  hour++;
+  40   3                  if(hour == 24)
+  41   3                  {
+  42   4                      hour = 0;
+  43   4                      day++;
+  44   4                      if(day > mclass[month-1])
+  45   4                      {
+  46   5                          day = 0;
+  47   5                          month++;
+  48   5                          if(month == 12)
+  49   5                          {
+  50   6                              month = 1;
+  51   6                              year++;
+  52   6                          }
+  53   5                      }
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 2   
+
+  54   4                  }
+  55   3              }
+  56   2          }
+  57   1          sprintf(temp,"%d-%02d-%02d ",year,month,day);
+  58   1          sprintf(temp1,"%02d:%02d:%02d %s \n",hour,minute,second,weekclass[day%7-1]);
+  59   1          return str;
+  60   1      }
+  61          
+  62          void makeHander() interrupt 0
+  63          {
+  64   1      
+  65   1          flag1 = !flag1;
+  66   1          beep = 1;
+  67   1      }
+  68          
+  69          
+  70          void makeTimer() interrupt 1
+  71          {
+  72   1          static int flag = 0;
+  73   1          TH0 = 0XFC;
+  74   1          TL0 = 0X18;
+  75   1          flag++;
+  76   1          if(flag >= 1000 && runOtherFunctions)
+  77   1          {
+  78   2              updatehander(Timer());
+  79   2              Clock(hour,minute,second,hour1,minute1,second1); 
+  80   2              EEPROMmaker();
+  81   2              flag = 0;
+  82   2          }       
+  83   1      
+  84   1      }
+  85          
+  86          void makeUart() interrupt 3
+  87          {
+  88   1          if (TR1 == 1){
+  89   2              TH1 = 0x30;    //波特率4800bps  
+  90   2              TL1 = 0x30;    //定时器
+  91   2              TF1 = 0;       //清除TF1标志
+  92   2          }
+  93   1      
+  94   1      }
+  95          
+  96          
+  97          void main()
+  98          {
+  99   1          TXD2 = 0;
+ 100   1          inituart();
+ 101   1          initinter();
+ 102   1          inittimer();
+ 103   1          EEPROMget();
+ 104   1          while(1)
+ 105   1          {   
+ 106   2          if(RXD2 == 0)
+ 107   2          {
+ 108   3              int maxnum = 410;
+ 109   3              unsigned char i = 0;
+ 110   3              runOtherFunctions = 0;
+ 111   3              EA = 0;
+ 112   3              while (maxnum--)
+ 113   3              {
+ 114   4                  if (RXD2 == 0)
+ 115   4                  {
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 3   
+
+ 116   5                      getdata();
+ 117   5                      maxnum = 410;
+ 118   5                  }
+ 119   4                  
+ 120   4              }
+ 121   3              timeio(buffer);
+ 122   3              runOtherFunctions = 1;
+ 123   3              EA = 1;
+ 124   3              for(i = 0; i < 12; i++)
+ 125   3              {
+ 126   4                  if (buffer[i] != 0)
+ 127   4                  {
+ 128   5                  buffer[i] = 0;
+ 129   5                  }
+ 130   4                  else
+ 131   4                  {
+ 132   5                      break;
+ 133   5                  }
+ 134   4              }
+ 135   3              getnum = 0;
+ 136   3          }
+ 137   2          if(flag1)
+ 138   2          {
+ 139   3              Nixie(4,second%10);
+ 140   3              Nixie(3,second/10);
+ 141   3              Nixie(2,minute%10);
+ 142   3              Nixie(1,minute/10);
+ 143   3          }
+ 144   2          else
+ 145   2          {
+ 146   3              Nixie(4,day%10);
+ 147   3              Nixie(3,day/10);
+ 148   3              Nixie(2,month%10);
+ 149   3              Nixie(1,month/10);
+ 150   3          }
+ 151   2          }
+ 152   1          
+ 153   1      }
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 4   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+             ; FUNCTION Timer (BEGIN)
+                                           ; SOURCE LINE # 24
+                                           ; SOURCE LINE # 25
+                                           ; SOURCE LINE # 26
+0000 E4                CLR     A
+0001 F500        R     MOV     i,A
+                                           ; SOURCE LINE # 28
+0003 F500        R     MOV     temp,A
+0005 750000      R     MOV     temp+01H,#HIGH str
+0008 750000      R     MOV     temp+02H,#LOW str
+                                           ; SOURCE LINE # 29
+000B F500        R     MOV     temp1,A
+000D 750000      R     MOV     temp1+01H,#HIGH str+0BH
+0010 750000      R     MOV     temp1+02H,#LOW str+0BH
+                                           ; SOURCE LINE # 30
+0013 0500        E     INC     second+01H
+0015 E500        E     MOV     A,second+01H
+0017 7002              JNZ     ?C0028
+0019 0500        E     INC     second
+001B         ?C0028:
+                                           ; SOURCE LINE # 31
+001B FF                MOV     R7,A
+001C 120000      E     LCALL   _makeled
+                                           ; SOURCE LINE # 32
+001F E500        E     MOV     A,second+01H
+0021 643C              XRL     A,#03CH
+0023 4500        E     ORL     A,second
+0025 7072              JNZ     ?C0001
+                                           ; SOURCE LINE # 33
+                                           ; SOURCE LINE # 34
+0027 F500        E     MOV     second,A
+0029 F500        E     MOV     second+01H,A
+                                           ; SOURCE LINE # 35
+002B 0500        E     INC     minute+01H
+002D E500        E     MOV     A,minute+01H
+002F 7002              JNZ     ?C0029
+0031 0500        E     INC     minute
+0033         ?C0029:
+                                           ; SOURCE LINE # 36
+0033 643C              XRL     A,#03CH
+0035 4500        E     ORL     A,minute
+0037 7060              JNZ     ?C0001
+                                           ; SOURCE LINE # 37
+                                           ; SOURCE LINE # 38
+0039 F500        E     MOV     minute,A
+003B F500        E     MOV     minute+01H,A
+                                           ; SOURCE LINE # 39
+003D 0500        E     INC     hour+01H
+003F E500        E     MOV     A,hour+01H
+0041 7002              JNZ     ?C0030
+0043 0500        E     INC     hour
+0045         ?C0030:
+                                           ; SOURCE LINE # 40
+0045 6418              XRL     A,#018H
+0047 4500        E     ORL     A,hour
+0049 704E              JNZ     ?C0001
+                                           ; SOURCE LINE # 41
+                                           ; SOURCE LINE # 42
+004B F500        E     MOV     hour,A
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 5   
+
+004D F500        E     MOV     hour+01H,A
+                                           ; SOURCE LINE # 43
+004F 0500        E     INC     day+01H
+0051 E500        E     MOV     A,day+01H
+0053 7002              JNZ     ?C0031
+0055 0500        E     INC     day
+0057         ?C0031:
+                                           ; SOURCE LINE # 44
+0057 7400        R     MOV     A,#LOW mclass+0FFFFH
+0059 2500        E     ADD     A,month+01H
+005B F582              MOV     DPL,A
+005D 7400        R     MOV     A,#HIGH mclass+0FFFFH
+005F 3500        E     ADDC    A,month
+0061 F583              MOV     DPH,A
+0063 E4                CLR     A
+0064 93                MOVC    A,@A+DPTR
+0065 FF                MOV     R7,A
+0066 33                RLC     A
+0067 95E0              SUBB    A,ACC
+0069 FE                MOV     R6,A
+006A D3                SETB    C
+006B E500        E     MOV     A,day+01H
+006D 9F                SUBB    A,R7
+006E EE                MOV     A,R6
+006F 6480              XRL     A,#080H
+0071 F8                MOV     R0,A
+0072 E500        E     MOV     A,day
+0074 6480              XRL     A,#080H
+0076 98                SUBB    A,R0
+0077 4020              JC      ?C0001
+                                           ; SOURCE LINE # 45
+                                           ; SOURCE LINE # 46
+0079 E4                CLR     A
+007A F500        E     MOV     day,A
+007C F500        E     MOV     day+01H,A
+                                           ; SOURCE LINE # 47
+007E 0500        E     INC     month+01H
+0080 E500        E     MOV     A,month+01H
+0082 7002              JNZ     ?C0032
+0084 0500        E     INC     month
+0086         ?C0032:
+                                           ; SOURCE LINE # 48
+0086 640C              XRL     A,#0CH
+0088 4500        E     ORL     A,month
+008A 700D              JNZ     ?C0001
+                                           ; SOURCE LINE # 49
+                                           ; SOURCE LINE # 50
+008C F500        E     MOV     month,A
+008E 750001      E     MOV     month+01H,#01H
+                                           ; SOURCE LINE # 51
+0091 0500        E     INC     year+01H
+0093 E500        E     MOV     A,year+01H
+0095 7002              JNZ     ?C0033
+0097 0500        E     INC     year
+0099         ?C0033:
+                                           ; SOURCE LINE # 52
+                                           ; SOURCE LINE # 53
+                                           ; SOURCE LINE # 54
+                                           ; SOURCE LINE # 55
+                                           ; SOURCE LINE # 56
+0099         ?C0001:
+                                           ; SOURCE LINE # 57
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 6   
+
+0099 7500FF      E     MOV     ?_sprintf?BYTE+03H,#0FFH
+009C 750000      R     MOV     ?_sprintf?BYTE+04H,#HIGH ?SC_30
+009F 750000      R     MOV     ?_sprintf?BYTE+05H,#LOW ?SC_30
+00A2 850000      E     MOV     ?_sprintf?BYTE+06H,year
+00A5 850000      E     MOV     ?_sprintf?BYTE+07H,year+01H
+00A8 850000      E     MOV     ?_sprintf?BYTE+08H,month
+00AB 850000      E     MOV     ?_sprintf?BYTE+09H,month+01H
+00AE 850000      E     MOV     ?_sprintf?BYTE+0AH,day
+00B1 850000      E     MOV     ?_sprintf?BYTE+0BH,day+01H
+00B4 AB00        R     MOV     R3,temp
+00B6 AA00        R     MOV     R2,temp+01H
+00B8 A900        R     MOV     R1,temp+02H
+00BA 120000      E     LCALL   _sprintf
+                                           ; SOURCE LINE # 58
+00BD 7500FF      E     MOV     ?_sprintf?BYTE+03H,#0FFH
+00C0 750000      R     MOV     ?_sprintf?BYTE+04H,#HIGH ?SC_44
+00C3 750000      R     MOV     ?_sprintf?BYTE+05H,#LOW ?SC_44
+00C6 850000      E     MOV     ?_sprintf?BYTE+06H,hour
+00C9 850000      E     MOV     ?_sprintf?BYTE+07H,hour+01H
+00CC 850000      E     MOV     ?_sprintf?BYTE+08H,minute
+00CF 850000      E     MOV     ?_sprintf?BYTE+09H,minute+01H
+00D2 850000      E     MOV     ?_sprintf?BYTE+0AH,second
+00D5 850000      E     MOV     ?_sprintf?BYTE+0BH,second+01H
+00D8 AE00        E     MOV     R6,day
+00DA AF00        E     MOV     R7,day+01H
+00DC 7C00              MOV     R4,#00H
+00DE 7D07              MOV     R5,#07H
+00E0 120000      E     LCALL   ?C?SIDIV
+00E3 900000      R     MOV     DPTR,#weekclass-03H
+00E6 75F003            MOV     B,#03H
+00E9 ED                MOV     A,R5
+00EA 120000      E     LCALL   ?C?OFFXADD
+00ED EC                MOV     A,R4
+00EE 75F003            MOV     B,#03H
+00F1 A4                MUL     AB
+00F2 2583              ADD     A,DPH
+00F4 F583              MOV     DPH,A
+00F6 E4                CLR     A
+00F7 93                MOVC    A,@A+DPTR
+00F8 FB                MOV     R3,A
+00F9 7401              MOV     A,#01H
+00FB 93                MOVC    A,@A+DPTR
+00FC FA                MOV     R2,A
+00FD 7402              MOV     A,#02H
+00FF 93                MOVC    A,@A+DPTR
+0100 8B00        E     MOV     ?_sprintf?BYTE+0CH,R3
+0102 8A00        E     MOV     ?_sprintf?BYTE+0DH,R2
+0104 F500        E     MOV     ?_sprintf?BYTE+0EH,A
+0106 AB00        R     MOV     R3,temp1
+0108 AA00        R     MOV     R2,temp1+01H
+010A A900        R     MOV     R1,temp1+02H
+010C 120000      E     LCALL   _sprintf
+                                           ; SOURCE LINE # 59
+010F 7B00              MOV     R3,#00H
+0111 7A00        R     MOV     R2,#HIGH str
+0113 7900        R     MOV     R1,#LOW str
+                                           ; SOURCE LINE # 60
+0115 22                RET     
+             ; FUNCTION Timer (END)
+
+             ; FUNCTION makeHander (BEGIN)
+0000 C0E0              PUSH    ACC
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 7   
+
+0002 C0D0              PUSH    PSW
+0004 75D000            MOV     PSW,#00H
+0007 C007              PUSH    AR7
+                                           ; SOURCE LINE # 62
+                                           ; SOURCE LINE # 65
+0009 E500        R     MOV     A,flag1
+000B 7F00              MOV     R7,#00H
+000D 7002              JNZ     ?C0007
+000F 7F01              MOV     R7,#01H
+0011         ?C0007:
+0011         ?C0008:
+0011 8F00        R     MOV     flag1,R7
+                                           ; SOURCE LINE # 66
+0013 D290              SETB    beep
+                                           ; SOURCE LINE # 67
+0015 D007              POP     AR7
+0017 D0D0              POP     PSW
+0019 D0E0              POP     ACC
+001B 32                RETI    
+             ; FUNCTION makeHander (END)
+
+             ; FUNCTION makeTimer (BEGIN)
+0000 C0E0              PUSH    ACC
+0002 C0F0              PUSH    B
+0004 C083              PUSH    DPH
+0006 C082              PUSH    DPL
+0008 C0D0              PUSH    PSW
+000A 75D000            MOV     PSW,#00H
+000D C000              PUSH    AR0
+000F C001              PUSH    AR1
+0011 C002              PUSH    AR2
+0013 C003              PUSH    AR3
+0015 C004              PUSH    AR4
+0017 C005              PUSH    AR5
+0019 C006              PUSH    AR6
+001B C007              PUSH    AR7
+                                           ; SOURCE LINE # 70
+                                           ; SOURCE LINE # 73
+001D 758CFC            MOV     TH0,#0FCH
+                                           ; SOURCE LINE # 74
+0020 758A18            MOV     TL0,#018H
+                                           ; SOURCE LINE # 75
+0023 0500        R     INC     flag+01H
+0025 E500        R     MOV     A,flag+01H
+0027 7002              JNZ     ?C0034
+0029 0500        R     INC     flag
+002B         ?C0034:
+                                           ; SOURCE LINE # 76
+002B C3                CLR     C
+002C 94E8              SUBB    A,#0E8H
+002E E500        R     MOV     A,flag
+0030 6480              XRL     A,#080H
+0032 9483              SUBB    A,#083H
+0034 4033              JC      ?C0011
+0036 300030            JNB     runOtherFunctions,?C0011
+                                           ; SOURCE LINE # 77
+                                           ; SOURCE LINE # 78
+0039 120000      R     LCALL   Timer
+003C 120000      E     LCALL   _updatehander
+                                           ; SOURCE LINE # 79
+003F 850000      E     MOV     ?_Clock?BYTE+06H,hour1
+0042 850000      E     MOV     ?_Clock?BYTE+07H,hour1+01H
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 8   
+
+0045 850000      E     MOV     ?_Clock?BYTE+08H,minute1
+0048 850000      E     MOV     ?_Clock?BYTE+09H,minute1+01H
+004B 850000      E     MOV     ?_Clock?BYTE+0AH,second1
+004E 850000      E     MOV     ?_Clock?BYTE+0BH,second1+01H
+0051 AB00        E     MOV     R3,second+01H
+0053 AA00        E     MOV     R2,second
+0055 AD00        E     MOV     R5,minute+01H
+0057 AC00        E     MOV     R4,minute
+0059 AF00        E     MOV     R7,hour+01H
+005B AE00        E     MOV     R6,hour
+005D 120000      E     LCALL   _Clock
+                                           ; SOURCE LINE # 80
+0060 120000      E     LCALL   EEPROMmaker
+                                           ; SOURCE LINE # 81
+0063 750000      R     MOV     flag,#00H
+0066 750000      R     MOV     flag+01H,#00H
+                                           ; SOURCE LINE # 82
+                                           ; SOURCE LINE # 84
+0069         ?C0011:
+0069 D007              POP     AR7
+006B D006              POP     AR6
+006D D005              POP     AR5
+006F D004              POP     AR4
+0071 D003              POP     AR3
+0073 D002              POP     AR2
+0075 D001              POP     AR1
+0077 D000              POP     AR0
+0079 D0D0              POP     PSW
+007B D082              POP     DPL
+007D D083              POP     DPH
+007F D0F0              POP     B
+0081 D0E0              POP     ACC
+0083 32                RETI    
+             ; FUNCTION makeTimer (END)
+
+             ; FUNCTION makeUart (BEGIN)
+                                           ; SOURCE LINE # 86
+                                           ; SOURCE LINE # 88
+0000 308E08            JNB     TR1,?C0013
+                                           ; SOURCE LINE # 89
+0003 758D30            MOV     TH1,#030H
+                                           ; SOURCE LINE # 90
+0006 758B30            MOV     TL1,#030H
+                                           ; SOURCE LINE # 91
+0009 C28F              CLR     TF1
+                                           ; SOURCE LINE # 92
+                                           ; SOURCE LINE # 94
+000B         ?C0013:
+000B 32                RETI    
+             ; FUNCTION makeUart (END)
+
+             ; FUNCTION main (BEGIN)
+                                           ; SOURCE LINE # 97
+                                           ; SOURCE LINE # 98
+                                           ; SOURCE LINE # 99
+0000 C2B1              CLR     TXD2
+                                           ; SOURCE LINE # 100
+0002 120000      E     LCALL   inituart
+                                           ; SOURCE LINE # 101
+0005 120000      E     LCALL   initinter
+                                           ; SOURCE LINE # 102
+0008 120000      E     LCALL   inittimer
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 9   
+
+                                           ; SOURCE LINE # 103
+000B 120000      E     LCALL   EEPROMget
+000E         ?C0014:
+                                           ; SOURCE LINE # 104
+                                           ; SOURCE LINE # 105
+                                           ; SOURCE LINE # 106
+000E 20B059            JB      RXD2,?C0016
+                                           ; SOURCE LINE # 107
+                                           ; SOURCE LINE # 108
+0011 750001      R     MOV     maxnum,#01H
+0014 75009A      R     MOV     maxnum+01H,#09AH
+                                           ; SOURCE LINE # 109
+0017 E4                CLR     A
+0018 F500        R     MOV     i,A
+                                           ; SOURCE LINE # 110
+001A C200        R     CLR     runOtherFunctions
+                                           ; SOURCE LINE # 111
+001C C2AF              CLR     EA
+001E         ?C0017:
+                                           ; SOURCE LINE # 112
+001E E500        R     MOV     A,maxnum+01H
+0020 1500        R     DEC     maxnum+01H
+0022 AE00        R     MOV     R6,maxnum
+0024 7002              JNZ     ?C0035
+0026 1500        R     DEC     maxnum
+0028         ?C0035:
+0028 4E                ORL     A,R6
+0029 600E              JZ      ?C0018
+                                           ; SOURCE LINE # 113
+                                           ; SOURCE LINE # 114
+002B 20B0F0            JB      RXD2,?C0017
+                                           ; SOURCE LINE # 115
+                                           ; SOURCE LINE # 116
+002E 120000      E     LCALL   getdata
+                                           ; SOURCE LINE # 117
+0031 750001      R     MOV     maxnum,#01H
+0034 75009A      R     MOV     maxnum+01H,#09AH
+                                           ; SOURCE LINE # 118
+                                           ; SOURCE LINE # 120
+0037 80E5              SJMP    ?C0017
+0039         ?C0018:
+                                           ; SOURCE LINE # 121
+0039 7B00              MOV     R3,#00H
+003B 7A00        E     MOV     R2,#HIGH buffer
+003D 7900        E     MOV     R1,#LOW buffer
+003F 120000      E     LCALL   _timeio
+                                           ; SOURCE LINE # 122
+0042 D200        R     SETB    runOtherFunctions
+                                           ; SOURCE LINE # 123
+0044 D2AF              SETB    EA
+                                           ; SOURCE LINE # 124
+0046 E4                CLR     A
+0047 F500        R     MOV     i,A
+0049         ?C0020:
+0049 C3                CLR     C
+004A E500        R     MOV     A,i
+004C 940C              SUBB    A,#0CH
+004E 7480              MOV     A,#080H
+0050 9480              SUBB    A,#080H
+0052 5013              JNC     ?C0021
+                                           ; SOURCE LINE # 125
+                                           ; SOURCE LINE # 126
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 10  
+
+0054 7400        E     MOV     A,#LOW buffer
+0056 2500        R     ADD     A,i
+0058 F8                MOV     R0,A
+0059 E6                MOV     A,@R0
+005A 600B              JZ      ?C0021
+                                           ; SOURCE LINE # 127
+                                           ; SOURCE LINE # 128
+005C 7400        E     MOV     A,#LOW buffer
+005E 2500        R     ADD     A,i
+0060 F8                MOV     R0,A
+0061 E4                CLR     A
+0062 F6                MOV     @R0,A
+                                           ; SOURCE LINE # 129
+                                           ; SOURCE LINE # 131
+                                           ; SOURCE LINE # 132
+                                           ; SOURCE LINE # 133
+                                           ; SOURCE LINE # 134
+0063 0500        R     INC     i
+0065 80E2              SJMP    ?C0020
+0067         ?C0021:
+                                           ; SOURCE LINE # 135
+0067 E4                CLR     A
+0068 F500        E     MOV     getnum,A
+                                           ; SOURCE LINE # 136
+006A         ?C0016:
+                                           ; SOURCE LINE # 137
+006A E500        R     MOV     A,flag1
+006C 604B              JZ      ?C0025
+                                           ; SOURCE LINE # 138
+                                           ; SOURCE LINE # 139
+006E AE00        E     MOV     R6,second
+0070 AF00        E     MOV     R7,second+01H
+0072 7C00              MOV     R4,#00H
+0074 7D0A              MOV     R5,#0AH
+0076 120000      E     LCALL   ?C?SIDIV
+0079 7F04              MOV     R7,#04H
+007B 120000      E     LCALL   _Nixie
+                                           ; SOURCE LINE # 140
+007E AE00        E     MOV     R6,second
+0080 AF00        E     MOV     R7,second+01H
+0082 7C00              MOV     R4,#00H
+0084 7D0A              MOV     R5,#0AH
+0086 120000      E     LCALL   ?C?SIDIV
+0089 AC06              MOV     R4,AR6
+008B AD07              MOV     R5,AR7
+008D 7F03              MOV     R7,#03H
+008F 120000      E     LCALL   _Nixie
+                                           ; SOURCE LINE # 141
+0092 AE00        E     MOV     R6,minute
+0094 AF00        E     MOV     R7,minute+01H
+0096 7C00              MOV     R4,#00H
+0098 7D0A              MOV     R5,#0AH
+009A 120000      E     LCALL   ?C?SIDIV
+009D 7F02              MOV     R7,#02H
+009F 120000      E     LCALL   _Nixie
+                                           ; SOURCE LINE # 142
+00A2 AE00        E     MOV     R6,minute
+00A4 AF00        E     MOV     R7,minute+01H
+00A6 7C00              MOV     R4,#00H
+00A8 7D0A              MOV     R5,#0AH
+00AA 120000      E     LCALL   ?C?SIDIV
+00AD AC06              MOV     R4,AR6
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 11  
+
+00AF AD07              MOV     R5,AR7
+00B1 7F01              MOV     R7,#01H
+00B3 120000      E     LCALL   _Nixie
+                                           ; SOURCE LINE # 143
+00B6 020000      R     LJMP    ?C0014
+00B9         ?C0025:
+                                           ; SOURCE LINE # 145
+                                           ; SOURCE LINE # 146
+00B9 AE00        E     MOV     R6,day
+00BB AF00        E     MOV     R7,day+01H
+00BD 7C00              MOV     R4,#00H
+00BF 7D0A              MOV     R5,#0AH
+00C1 120000      E     LCALL   ?C?SIDIV
+00C4 7F04              MOV     R7,#04H
+00C6 120000      E     LCALL   _Nixie
+                                           ; SOURCE LINE # 147
+00C9 AE00        E     MOV     R6,day
+00CB AF00        E     MOV     R7,day+01H
+00CD 7C00              MOV     R4,#00H
+00CF 7D0A              MOV     R5,#0AH
+00D1 120000      E     LCALL   ?C?SIDIV
+00D4 AC06              MOV     R4,AR6
+00D6 AD07              MOV     R5,AR7
+00D8 7F03              MOV     R7,#03H
+00DA 120000      E     LCALL   _Nixie
+                                           ; SOURCE LINE # 148
+00DD AE00        E     MOV     R6,month
+00DF AF00        E     MOV     R7,month+01H
+00E1 7C00              MOV     R4,#00H
+00E3 7D0A              MOV     R5,#0AH
+00E5 120000      E     LCALL   ?C?SIDIV
+00E8 7F02              MOV     R7,#02H
+00EA 120000      E     LCALL   _Nixie
+                                           ; SOURCE LINE # 149
+00ED AE00        E     MOV     R6,month
+00EF AF00        E     MOV     R7,month+01H
+00F1 7C00              MOV     R4,#00H
+00F3 7D0A              MOV     R5,#0AH
+00F5 120000      E     LCALL   ?C?SIDIV
+00F8 AC06              MOV     R4,AR6
+00FA AD07              MOV     R5,AR7
+00FC 7F01              MOV     R7,#01H
+00FE 120000      E     LCALL   _Nixie
+                                           ; SOURCE LINE # 150
+                                           ; SOURCE LINE # 151
+0101 020000      R     LJMP    ?C0014
+             ; FUNCTION main (END)
+
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 12  
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+second . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+_Nixie . . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+P0 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0080H  1
+P1 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0090H  1
+P2 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A0H  1
+P3 . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B0H  1
+Timer. . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  i. . . . . . . . . . . . . . . . . .  AUTO     DATA   CHAR     0000H  1
+  str. . . . . . . . . . . . . . . . .  STATIC   DATA   ARRAY    0000H  28
+  temp . . . . . . . . . . . . . . . .  AUTO     DATA   PTR      0001H  3
+  temp1. . . . . . . . . . . . . . . .  AUTO     DATA   PTR      0004H  3
+T0 . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B4H  1
+AC . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D6H  1
+T1 . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B5H  1
+T2 . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0090H  1
+EA . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00AFH  1
+mclass . . . . . . . . . . . . . . . .  PUBLIC   CODE   ARRAY    0040H  12
+_timeio. . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+_sprintf . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+EEPROMget. . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+IE . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00A8H  1
+size_t . . . . . . . . . . . . . . . .  TYPEDEF  -----  U_INT    -----  2
+getnum . . . . . . . . . . . . . . . .  EXTERN   DATA   U_CHAR   -----  1
+minute . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+EXF2 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CEH  1
+RD . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B7H  1
+ES . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00ACH  1
+IP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00B8H  1
+RI . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0098H  1
+INT0 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B2H  1
+CY . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D7H  1
+runOtherFunctions. . . . . . . . . . .  PUBLIC   DATA   BIT      0000H  1
+TI . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0099H  1
+INT1 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B3H  1
+beep . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0090H  1
+RXD2 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B0H  1
+RCAP2H . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CBH  1
+TXD2 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B1H  1
+PS . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00BCH  1
+SP . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0081H  1
+T2EX . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0091H  1
+makeTimer. . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  flag . . . . . . . . . . . . . . . .  STATIC   DATA   INT      001CH  2
+OV . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D2H  1
+RCAP2L . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CAH  1
+main . . . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+  maxnum . . . . . . . . . . . . . . .  AUTO     DATA   INT      0000H  2
+  i. . . . . . . . . . . . . . . . . .  AUTO     DATA   U_CHAR   0002H  1
+month. . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+C_T2 . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00C9H  1
+WR . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B6H  1
+RCLK . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CDH  1
+TCLK . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CCH  1
+second1. . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+SBUF . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0099H  1
+PCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0087H  1
+year . . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 13  
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+SCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0098H  1
+TMOD . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0089H  1
+TCON . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0088H  1
+IE0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0089H  1
+makeUart . . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+day. . . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+IE1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008BH  1
+hour . . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+B. . . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00F0H  1
+CP_RL2 . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00C8H  1
+minute1. . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+ACC. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00E0H  1
+weekclass. . . . . . . . . . . . . . .  PUBLIC   CODE   ARRAY    004CH  21
+ET0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00A9H  1
+ET1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00ABH  1
+TF0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008DH  1
+ET2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00ADH  1
+TF1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008FH  1
+TF2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CFH  1
+RB8. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009AH  1
+TH0. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008CH  1
+flag1. . . . . . . . . . . . . . . . .  STATIC   DATA   CHAR     001EH  1
+EX0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00A8H  1
+IT0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      0088H  1
+TH1. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008DH  1
+TB8. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009BH  1
+EX1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00AAH  1
+IT1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008AH  1
+TH2. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CDH  1
+P. . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D0H  1
+SM0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009FH  1
+TL0. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008AH  1
+SM1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009EH  1
+TL1. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   008BH  1
+SM2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009DH  1
+TL2. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00CCH  1
+PT0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B9H  1
+PT1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00BBH  1
+RS0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D3H  1
+PT2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00BDH  1
+TR0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008CH  1
+RS1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D4H  1
+_makeled . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+TR1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      008EH  1
+TR2. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CAH  1
+PX0. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B8H  1
+PX1. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00BAH  1
+inittimer. . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+initinter. . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+DPH. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0083H  1
+EEPROMmaker. . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+getdata. . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+DPL. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   0082H  1
+EXEN2. . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00CBH  1
+REN. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      009CH  1
+T2CON. . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00C8H  1
+_Clock . . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+C51 COMPILER V9.59.0.0   MAIN                                                              01/22/2024 23:25:30 PAGE 14  
+
+NAME                                    CLASS   MSPACE  TYPE    OFFSET  SIZE
+====                                    =====   ======  ====    ======  ====
+
+
+RXD. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B0H  1
+TXD. . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00B1H  1
+hour1. . . . . . . . . . . . . . . . .  EXTERN   DATA   INT      -----  2
+inituart . . . . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+F0 . . . . . . . . . . . . . . . . . .  ABSBIT   -----  BIT      00D5H  1
+makeHander . . . . . . . . . . . . . .  PUBLIC   CODE   PROC     0000H  -----
+PSW. . . . . . . . . . . . . . . . . .  SFR      DATA   U_CHAR   00D0H  1
+_updatehander. . . . . . . . . . . . .  EXTERN   CODE   PROC     -----  -----
+buffer . . . . . . . . . . . . . . . .  EXTERN   DATA   ARRAY    -----  10
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    719    ----
+   CONSTANT SIZE    =     97    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     31      10
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
